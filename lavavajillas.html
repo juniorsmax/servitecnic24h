@@ -67,7 +67,7 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18125424540');gtag('config','G-PYX8VN8SB2');</script>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TF473QQQ');</script>
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","vmmcjfog8f");</script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LfC2HYsAAAAAJsbo_DyUXMIoF7pnh0CWMZ00aSH"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Ld9ZJEqAAAAABv9FLhm4yZLw34DUVn4eJ-JEXqW"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -436,7 +436,7 @@
     if(!valid)return;
     const btn=document.getElementById('btn-submit'); btn.disabled=true; btn.innerHTML='<span class="spinner"></span>Enviando...';
     grecaptcha.ready(()=>{
-      grecaptcha.execute('6LfC2HYsAAAAAJsbo_DyUXMIoF7pnh0CWMZ00aSH',{action:'submit'}).then(token=>{
+      grecaptcha.execute('6Ld9ZJEqAAAAABv9FLhm4yZLw34DUVn4eJ-JEXqW',{action:'submit'}).then(token=>{
         const ref='BCN-'+Date.now().toString(36).toUpperCase();
         emailjs.send('service_dgblntm','template_gws4txt',{subject:'[BOSCH] Nueva solicitud - Lavavajillas en Barcelona',appliance:document.getElementById('appliance').value,fault:document.getElementById('fault').value,postalCode:document.getElementById('postalCode').value,fullName:name.value.trim(),phone:phone.value.trim(),address:address.value.trim(),reference:ref,recaptcha_token:token})
         .then(()=>{document.getElementById('form-step2').classList.add('hidden');document.getElementById('form-success').classList.remove('hidden');document.getElementById('success-phone').textContent=phone.value.trim();document.getElementById('success-ref').textContent=ref;if(typeof gtag!=='undefined')gtag('event','conversion',{'send_to':'AW-18125424540'});})
