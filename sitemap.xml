@@ -1,86 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://servitecnic24h.com/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://servitecnic24h.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://servitecnic24h.com/"/>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/lavadoras</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/lavadoras.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/lavavajillas</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/lavavajillas.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/frigorificos</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/frigorificos.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/campanas</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/hornos.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/secadoras</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/secadoras.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/hornos</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/campanas.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/vitroceramica-induccion</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/vitroceramica.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/termos-electricos</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/politica-privacidad</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/privacidad.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/aviso-legal</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/cookies.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://www.servitecnics.com/bosch/barcelona/politica-cookies</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://servitecnic24h.com/aviso-legal.html</loc>
+    <lastmod>2025-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

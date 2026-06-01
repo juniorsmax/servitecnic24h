@@ -10,9 +10,16 @@
   <meta name="description" content="Servicio técnico Bosch Barcelona. Reparamos lavadoras, lavavajillas, frigoríficos, hornos y más. Diagnóstico gratuito, repuestos originales, garantía por escrito. ☎ Solicita visita.">
   <meta name="keywords" content="servicio técnico bosch barcelona, reparación electrodomésticos barcelona, técnico bosch lavadora, técnico bosch frigorífico, técnico bosch horno, servicio bosch barcelona, reparación bosch barcelona">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://servitecnic24h.com">
+  <link rel="alternate" hreflang="es" href="https://servitecnic24h.com">
+  <link rel="alternate" hreflang="ca" href="https://servitecnic24h.com">
+  <link rel="alternate" hreflang="en" href="https://servitecnic24h.com">
+  <link rel="alternate" hreflang="x-default" href="https://servitecnic24h.com">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- Security -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googletagmanager.com;">
 
@@ -28,6 +35,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Servicio Técnico Bosch Barcelona - Reparación Electrodomésticos | Diagnóstico Gratis">
   <meta name="twitter:description" content="Servicio técnico Bosch Barcelona. Reparamos lavadoras, lavavajillas, frigoríficos, hornos y más. Diagnóstico gratuito, repuestos originales, garantía por escrito.">
+  <meta property="og:image" content="https://servitecnic24h.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://servitecnic24h.com/og-image.jpg">
 
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
@@ -48,7 +59,14 @@
     },
     "areaServed": ["Barcelona", "Hospitalet de Llobregat", "Badalona", "Terrassa", "Sabadell", "Mataró", "Cornellà", "Sant Cugat del Vallès"],
     "openingHours": ["Mo-Fr 09:00-18:00"],
-    "priceRange": "€€"
+    "priceRange": "€€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "87",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -473,6 +491,9 @@
           </label>
           <div class="field-error" data-i18n="err_consent">Debe aceptar ser contactado para continuar</div>
         </div>
+
+        <!-- Honeypot anti-spam: invisible para humanos, los bots lo rellenan -->
+        <input type="text" id="hp-website" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
 
         <div class="btn-row">
           <button class="btn btn-outline" onclick="goStep1()" style="flex:0 0 auto;padding:.75rem 1rem;" data-i18n="btn_back">← Atrás</button>
@@ -1036,8 +1057,15 @@
 
 <!-- FOOTER -->
 <footer>
-  <p data-i18n="footer_copy">© 2025 Servicio Técnico Bosch Barcelona. Todos los derechos reservados.</p>
-  <p style="margin-top:.5rem;font-size:.78rem;opacity:.6;" data-i18n="footer_disc">Servicio técnico independiente especializado en la marca Bosch. No somos el servicio oficial de Bosch.</p>
+  <div style="margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;font-size:.82rem;">
+    <a href="/privacidad.html" style="color:rgba(255,255,255,.75);text-decoration:none;" data-i18n="footer_privacy">Política de Privacidad</a>
+    <span style="opacity:.4;">·</span>
+    <a href="/cookies.html" style="color:rgba(255,255,255,.75);text-decoration:none;" data-i18n="footer_cookies">Política de Cookies</a>
+    <span style="opacity:.4;">·</span>
+    <a href="/aviso-legal.html" style="color:rgba(255,255,255,.75);text-decoration:none;" data-i18n="footer_legal">Aviso Legal</a>
+  </div>
+  <p data-i18n="footer_copy">© 2025 Servicio Técnico Barcelona. Todos los derechos reservados.</p>
+  <p style="margin-top:.5rem;font-size:.78rem;opacity:.6;" data-i18n="footer_disc">No somos el servicio oficial de ninguna marca.</p>
 </footer>
 
 <!-- TOAST -->
@@ -1146,7 +1174,10 @@
       cookie_accept: 'Aceptar todas',
       cookie_reject: 'Rechazar',
       footer_copy: '© 2025 Servicio Técnico Barcelona. Todos los derechos reservados.',
-      footer_disc: 'Servicio técnico independiente especializado en electrodomésticos. No somos el servicio oficial de ninguna marca.'
+      footer_disc: 'Servicio técnico independiente especializado en electrodomésticos. No somos el servicio oficial de ninguna marca.',
+      footer_privacy: 'Política de Privacidad',
+      footer_cookies: 'Política de Cookies',
+      footer_legal: 'Aviso Legal'
     },
     ca: {
       nav_inicio: 'Inici',
@@ -1233,7 +1264,10 @@
       cookie_accept: 'Acceptar totes',
       cookie_reject: 'Rebutjar',
       footer_copy: '© 2025 Servei Tècnic Barcelona. Tots els drets reservats.',
-      footer_disc: 'Servei tècnic independent especialitzat en electrodomèstics. No som el servei oficial de cap marca.'
+      footer_disc: 'Servei tècnic independent especialitzat en electrodomèstics. No som el servei oficial de cap marca.',
+      footer_privacy: 'Política de Privacitat',
+      footer_cookies: 'Política de Cookies',
+      footer_legal: 'Avís Legal'
     },
     en: {
       nav_inicio: 'Home',
@@ -1320,7 +1354,10 @@
       cookie_accept: 'Accept all',
       cookie_reject: 'Reject',
       footer_copy: '© 2025 Technical Service Barcelona. All rights reserved.',
-      footer_disc: 'Independent technical service specialised in home appliances. We are not the official service of any brand.'
+      footer_disc: 'Independent technical service specialised in home appliances. We are not the official service of any brand.',
+      footer_privacy: 'Privacy Policy',
+      footer_cookies: 'Cookie Policy',
+      footer_legal: 'Legal Notice'
     }
   };
 
@@ -1497,6 +1534,7 @@
   // ── Submit ──
   async function submitForm() {
     if (!validateStep2()) return;
+    if (document.getElementById('hp-website').value) return;
 
     const t = TRANSLATIONS[currentLang] || TRANSLATIONS.es;
     const btn = document.getElementById('btn-submit');
