@@ -1,260 +1,761 @@
-
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.ico" />
-    <meta name="generator" content="Hostinger Horizons" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
-    <!-- Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18125424540"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18125424540');
-    </script>
-    <!-- End Google Ads -->
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Servicio Técnico Bosch Barcelona. Reparación de electrodomésticos con técnicos certificados, repuestos originales y garantía por escrito. Diagnóstico gratuito." />
+  <meta name="keywords" content="servicio técnico bosch barcelona, reparación electrodomésticos barcelona, técnico bosch, lavadora, lavavajillas, frigorífico, horno" />
+  <title>Servicio Técnico Bosch - Reparación de Electrodomésticos Barcelona</title>
 
-    <!-- Google Ads: Conversión por envío de formulario -->
-    <!-- Intercepta llamadas exitosas a EmailJS en todas las páginas de categoría -->
-    <!-- (lavadoras, secadoras, hornos, lavavajillas, etc.) -->
-    <script>
-      (function() {
-        var _origFetch = window.fetch;
-        window.fetch = function() {
-          var args = Array.prototype.slice.call(arguments);
-          var url = args[0] instanceof Request ? args[0].url : String(args[0]);
-          var promise = _origFetch.apply(this, args);
-          if (url.indexOf('emailjs.com') !== -1) {
-            promise.then(function(response) {
-              if (response.ok && typeof gtag === 'function') {
-                gtag('event', 'conversion', {
-                  'send_to': 'AW-18125424540/f9zMCPmvo6QcEJyP8MJD'
-                });
-              }
-            }).catch(function() {});
-          }
-          return promise;
-        };
-      })();
-    </script>
-    <!-- End Google Ads Conversión formulario -->
+  <!-- Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18125424540"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18125424540');
+  </script>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TF473QQQ');</script>
-    <!-- End Google Tag Manager -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TF473QQQ');</script>
 
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfC2HYsAAAAAJsbo_DyUXMIoF7pnh0CWMZ00aSH"></script>
-    
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "vmmcjfog8f");
-    </script>
+  <!-- reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfC2HYsAAAAAJsbo_DyUXMIoF7pnh0CWMZ00aSH"></script>
 
-    <!-- Google Analytics (conditional loading) -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Check cookie consent before loading GA
-      const consent = localStorage.getItem('cookieConsent');
-      if (consent) {
-        try {
-          const consentData = JSON.parse(consent);
-          if (consentData.analytics) {
-            // Load Google Analytics
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-PYX8VN8SB2';
-            document.head.appendChild(script);
-            
-            gtag('js', new Date());
-            gtag('config', 'G-PYX8VN8SB2');
-          }
-        } catch (e) {
-          console.error('Error parsing cookie consent:', e);
-        }
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #003DA5;
+      --blue-dark: #002d7a;
+      --blue-light: #e8eef9;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --radius: 0.75rem;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--blue); color: #fff;
+      padding: 0 1.5rem; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,.18);
+    }
+    .nav-brand { font-size: 1.1rem; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: .5rem; }
+    .nav-brand span { font-weight: 400; opacity: .85; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: #fff; color: var(--blue); border: none; border-radius: .5rem; padding: .45rem 1.1rem; font-size: .9rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: opacity .2s; }
+    .nav-cta:hover { opacity: .88; }
+    @media(max-width:640px){ .nav-links { display: none; } }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #0052cc 100%);
+      color: #fff; padding: 3rem 1.5rem 3.5rem;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    @media(max-width:768px){ .hero-inner { grid-template-columns: 1fr; } }
+    .hero-location { font-size: .85rem; font-weight: 600; background: rgba(255,255,255,.15); display: inline-block; padding: .3rem .85rem; border-radius: 2rem; margin-bottom: 1rem; }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .hero h1 span { color: #93c5fd; }
+    .hero-desc { font-size: 1rem; opacity: .9; line-height: 1.65; margin-bottom: 1.5rem; }
+    .hero-checks { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .hero-checks li { display: flex; align-items: center; gap: .6rem; font-size: .9rem; opacity: .92; }
+    .hero-checks li::before { content: '✓'; font-weight: 800; color: #93c5fd; flex-shrink: 0; }
+
+    /* FORM CARD */
+    .form-card {
+      background: #fff; border-radius: 1.25rem; padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25); color: var(--text);
+    }
+    .form-card-header { text-align: center; margin-bottom: 1.5rem; }
+    .form-card-header h2 { font-size: 1.2rem; font-weight: 800; color: var(--blue); }
+    .form-card-header p { font-size: .85rem; color: var(--gray); margin-top: .3rem; }
+
+    /* PROGRESS */
+    .progress-bar { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.5rem; }
+    .progress-step { flex: 1; height: 4px; border-radius: 4px; background: var(--border); transition: background .3s; }
+    .progress-step.active { background: var(--blue); }
+    .progress-label { font-size: .78rem; color: var(--gray); text-align: center; margin-bottom: 1rem; font-weight: 500; }
+
+    /* FORM INPUTS */
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: .82rem; font-weight: 600; margin-bottom: .35rem; color: #374151; }
+    .field select, .field input { width: 100%; padding: .65rem .85rem; border: 1.5px solid var(--border); border-radius: .6rem; font-size: .9rem; font-family: 'Inter', sans-serif; color: var(--text); background: #fff; transition: border-color .2s, box-shadow .2s; outline: none; }
+    .field select:focus, .field input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,61,165,.1); }
+    .field select:disabled { background: var(--gray-light); color: var(--gray); cursor: not-allowed; }
+    .field-error { font-size: .75rem; color: #dc2626; margin-top: .3rem; display: none; }
+    .field.has-error input, .field.has-error select { border-color: #dc2626; }
+    .field.has-error .field-error { display: block; }
+
+    /* CHECKBOX */
+    .consent-wrap { display: flex; align-items: flex-start; gap: .65rem; cursor: pointer; font-size: .82rem; color: #374151; line-height: 1.5; }
+    .consent-wrap input[type=checkbox] { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; accent-color: var(--blue); cursor: pointer; }
+
+    /* BUTTONS */
+    .btn-row { display: flex; gap: .75rem; margin-top: 1.25rem; }
+    .btn { border: none; border-radius: .6rem; padding: .75rem 1.25rem; font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; flex: 1; font-family: 'Inter', sans-serif; }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-outline { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue-light); }
+
+    /* SUCCESS */
+    .form-success { text-align: center; padding: 1rem 0; }
+    .form-success .success-icon { width: 64px; height: 64px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; }
+    .form-success h3 { font-size: 1.2rem; font-weight: 800; color: #16a34a; margin-bottom: .5rem; }
+    .form-success p { font-size: .88rem; color: var(--gray); line-height: 1.6; }
+    .form-success .ref { font-weight: 700; color: var(--text); }
+    .form-success .next-steps { background: var(--blue-light); border-radius: .75rem; padding: 1rem; margin-top: 1.25rem; text-align: left; }
+    .form-success .next-steps h4 { font-size: .85rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .form-success .next-steps ol { padding-left: 1.2rem; font-size: .82rem; color: #374151; line-height: 1.8; }
+
+    /* SECTIONS */
+    .section { padding: 4rem 1.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: 1.75rem; font-weight: 800; text-align: center; margin-bottom: .5rem; }
+    .section-sub { text-align: center; color: var(--gray); font-size: .95rem; margin-bottom: 2.5rem; }
+
+    /* WHY CARDS */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media(max-width:768px){ .why-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px){ .why-grid { grid-template-columns: 1fr; } }
+    .why-card { background: var(--blue-light); border-radius: var(--radius); padding: 1.5rem; }
+    .why-card .icon { font-size: 1.8rem; margin-bottom: .75rem; }
+    .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; color: var(--blue); }
+    .why-card p { font-size: .85rem; color: var(--gray); line-height: 1.6; }
+
+    /* APPLIANCES */
+    .appliances-bg { background: var(--gray-light); }
+    .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    @media(max-width:768px){ .app-grid { grid-template-columns: repeat(2, 1fr); } }
+    .app-card { background: #fff; border-radius: var(--radius); padding: 1.5rem 1rem; text-align: center; border: 1.5px solid var(--border); cursor: pointer; transition: all .2s; text-decoration: none; color: var(--text); }
+    .app-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(0,61,165,.12); transform: translateY(-2px); }
+    .app-card .app-icon { font-size: 2.2rem; margin-bottom: .6rem; }
+    .app-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; }
+    .app-card p { font-size: .78rem; color: var(--gray); }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 700px; margin: 0 auto; }
+    @media(max-width:640px){ .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
+    .price-card h3 { font-size: .85rem; font-weight: 600; color: var(--gray); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .05em; }
+    .price-card .price { font-size: 1.4rem; font-weight: 800; color: var(--blue); }
+    .price-card p { font-size: .78rem; color: var(--gray); margin-top: .35rem; line-height: 1.5; }
+    .pricing-note { text-align: center; font-size: .78rem; color: var(--gray); margin-top: 1rem; }
+
+    /* REVIEWS */
+    .reviews-bg { background: var(--gray-light); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media(max-width:900px){ .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:560px){ .reviews-grid { grid-template-columns: 1fr; } }
+    .review-card { background: #fff; border-radius: var(--radius); padding: 1.25rem; }
+    .review-stars { color: #facc15; font-size: 1rem; margin-bottom: .5rem; }
+    .review-text { font-size: .85rem; color: #374151; line-height: 1.65; margin-bottom: .75rem; }
+    .review-author { display: flex; align-items: center; gap: .6rem; }
+    .review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; flex-shrink: 0; }
+    .review-name { font-size: .85rem; font-weight: 700; }
+    .review-location { font-size: .75rem; color: var(--gray); }
+    .review-appliance { font-size: .72rem; color: var(--blue); font-weight: 600; margin-top: .15rem; }
+
+    /* FOOTER */
+    footer { background: #111827; color: rgba(255,255,255,.7); padding: 2rem 1.5rem; text-align: center; font-size: .85rem; }
+    footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* COOKIE BANNER */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: #1f2937; color: #fff; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.3);
+    }
+    #cookie-banner p { font-size: .85rem; opacity: .9; flex: 1; min-width: 200px; }
+    #cookie-banner a { color: #93c5fd; }
+    .cookie-btns { display: flex; gap: .5rem; flex-shrink: 0; }
+    .cookie-accept { background: var(--blue); color: #fff; border: none; padding: .55rem 1.2rem; border-radius: .5rem; font-weight: 700; font-size: .85rem; cursor: pointer; }
+    .cookie-reject { background: transparent; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.3); padding: .55rem 1rem; border-radius: .5rem; font-size: .85rem; cursor: pointer; }
+
+    /* Spinner */
+    .spinner { display: inline-block; width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; margin-right: .5rem; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Toast */
+    #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; max-width: 320px; display: none; }
+    .toast-box { background: #1f2937; color: #fff; border-radius: .75rem; padding: 1rem 1.25rem; font-size: .88rem; box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+    .toast-box.error { background: #991b1b; }
+    .toast-title { font-weight: 700; margin-bottom: .25rem; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF473QQQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>Usamos cookies propias y de terceros para mejorar tu experiencia y mostrarte publicidad personalizada. <a href="#" onclick="return false;">Más información</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-reject" onclick="rejectCookies()">Rechazar</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Aceptar todas</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Servicio Técnico <span>Bosch</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Solicitar visita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-location">📍 Barcelona y alrededores</div>
+      <h1>Servicio Técnico<br><span>Especializado Bosch</span></h1>
+      <p class="hero-desc">Más de 20 años de experiencia reparando electrodomésticos. Técnicos certificados, repuestos originales y garantía por escrito.</p>
+      <ul class="hero-checks">
+        <li>Diagnóstico GRATIS si se realiza la reparación</li>
+        <li>Sin cargo de desplazamiento al realizar la reparación</li>
+        <li>Garantía por escrito en todas las reparaciones</li>
+        <li>Repuestos y piezas 100% originales</li>
+        <li>Directamente con el técnico especializado</li>
+        <li>Atención personalizada y asesoramiento incluido</li>
+      </ul>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-card" id="contacto">
+      <!-- STEP 1 -->
+      <div id="form-step1">
+        <div class="form-card-header">
+          <h2>Solicita tu reparación</h2>
+          <p>Llena el formulario y un técnico te contactará</p>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-step active" id="bar1"></div>
+          <div class="progress-step" id="bar2"></div>
+        </div>
+        <p class="progress-label">Paso 1 de 2 — ¿Qué necesitas reparar?</p>
+
+        <div class="field" id="f-appliance">
+          <label for="appliance">Electrodoméstico *</label>
+          <select id="appliance" onchange="updateFaults()">
+            <option value="">Seleccione el que necesita reparar</option>
+            <option>Lavadora</option>
+            <option>Lavavajillas</option>
+            <option>Frigorífico</option>
+            <option>Horno</option>
+            <option>Secadora</option>
+            <option>Campana</option>
+            <option>Vitrocerámica / Placa de Inducción</option>
+          </select>
+          <div class="field-error">Por favor, seleccione un electrodoméstico</div>
+        </div>
+
+        <div class="field" id="f-fault">
+          <label for="fault">Tipo de avería *</label>
+          <select id="fault" disabled>
+            <option value="">Seleccione primero el electrodoméstico</option>
+          </select>
+          <div class="field-error">Por favor, seleccione una avería</div>
+        </div>
+
+        <div class="field" id="f-postal">
+          <label for="postalCode">Código Postal *</label>
+          <input type="text" id="postalCode" placeholder="08001" maxlength="5" inputmode="numeric" />
+          <div class="field-error">El código postal debe tener 5 dígitos</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="goStep2()">Siguiente →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="form-step2" class="hidden">
+        <div class="form-card-header">
+          <h2>Solicita tu reparación</h2>
+          <p>Llena el formulario y un técnico te contactará</p>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-step active" id="bar1b"></div>
+          <div class="progress-step active" id="bar2b"></div>
+        </div>
+        <p class="progress-label">Paso 2 de 2 — ¿Cómo te contactamos?</p>
+
+        <div class="field" id="f-name">
+          <label for="fullName">Nombre y Apellido *</label>
+          <input type="text" id="fullName" placeholder="Nombre y apellido" />
+          <div class="field-error">Introduzca su nombre y apellido</div>
+        </div>
+
+        <div class="field" id="f-phone">
+          <label for="phone">Teléfono *</label>
+          <input type="tel" id="phone" placeholder="612345678" maxlength="12" inputmode="tel" />
+          <div class="field-error">El teléfono debe tener 9 dígitos</div>
+        </div>
+
+        <div class="field" id="f-address">
+          <label for="address">Dirección *</label>
+          <input type="text" id="address" placeholder="Calle, número, piso y puerta o casa" />
+          <div class="field-error">Introduzca su dirección completa</div>
+        </div>
+
+        <div class="field" id="f-consent">
+          <label class="consent-wrap">
+            <input type="checkbox" id="contactConsent" />
+            Acepto ser contactado vía telefónica para agendar la cita con el técnico
+          </label>
+          <div class="field-error">Debe aceptar ser contactado para continuar</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-outline" onclick="goStep1()" style="flex:0 0 auto;padding:.75rem 1rem;">← Atrás</button>
+          <button class="btn btn-primary" id="btn-submit" onclick="submitForm()">Enviar Solicitud</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="form-success" class="hidden form-success">
+        <div class="success-icon">✓</div>
+        <h3>¡Solicitud Enviada!</h3>
+        <p>Su solicitud ha sido recibida correctamente. Un técnico le llamará al <strong id="success-phone"></strong> para agendar la visita.</p>
+        <p style="margin-top:.5rem;font-size:.8rem;color:#6b7280;">Número de referencia: <span class="ref" id="success-ref"></span></p>
+        <div class="next-steps">
+          <h4>¿Qué ocurre ahora?</h4>
+          <ol>
+            <li>Un técnico revisará su solicitud en las próximas horas</li>
+            <li>Recibirá una llamada para confirmar fecha y hora</li>
+            <li>El técnico acudirá a su domicilio con los repuestos necesarios</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">¿Por qué elegirnos?</h2>
+    <p class="section-sub">Expertos en la marca con el respaldo de años de experiencia</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🏆</div>
+        <h3>Expertos en Bosch</h3>
+        <p>Técnicos especializados con más de 20 años de experiencia en la marca.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🔍</div>
+        <h3>Diagnóstico Gratis</h3>
+        <p>Si realizamos la reparación, el diagnóstico no tiene coste.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📋</div>
+        <h3>Garantía por Escrito</h3>
+        <p>Todas nuestras reparaciones incluyen garantía documentada.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h3>Servicio Rápido</h3>
+        <p>Sin cargos adicionales. Atención ágil y eficiente.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🔩</div>
+        <h3>Repuestos Originales</h3>
+        <p>Usamos piezas y recambios 100% originales Bosch.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🚗</div>
+        <h3>Sin Cargo Desplazamiento</h3>
+        <p>El desplazamiento es gratuito si se realiza la reparación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLIANCES -->
+<section class="section appliances-bg" id="servicios">
+  <div class="section-inner">
+    <h2 class="section-title">Electrodomésticos que reparamos</h2>
+    <p class="section-sub">Servicio técnico especializado en toda la gama Bosch</p>
+    <div class="app-grid">
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Lavadora')">
+        <div class="app-icon">🫧</div>
+        <h3>Lavadoras</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Lavavajillas')">
+        <div class="app-icon">🍽️</div>
+        <h3>Lavavajillas</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Frigorífico')">
+        <div class="app-icon">❄️</div>
+        <h3>Frigoríficos</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Horno')">
+        <div class="app-icon">🔥</div>
+        <h3>Hornos</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Secadora')">
+        <div class="app-icon">💨</div>
+        <h3>Secadoras</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Campana')">
+        <div class="app-icon">🌬️</div>
+        <h3>Campanas</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+      <a href="#contacto" class="app-card" onclick="preselectAppliance('Vitrocerámica / Placa de Inducción')">
+        <div class="app-icon">🍳</div>
+        <h3>Vitrocerámicas</h3>
+        <p>Diagnóstico y reparación</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">Tarifas del Servicio</h2>
+    <p class="section-sub">Precios transparentes, sin sorpresas</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Desplazamiento</h3>
+        <div class="price">GRATIS</div>
+        <p>Gratuito si se realiza la reparación</p>
+      </div>
+      <div class="price-card">
+        <h3>Diagnóstico</h3>
+        <div class="price">GRATIS</div>
+        <p>Sin coste al realizar la reparación</p>
+      </div>
+      <div class="price-card">
+        <h3>Reparación</h3>
+        <div class="price" style="font-size:1rem;padding-top:.3rem;">Según avería</div>
+        <p>Presupuesto previo sin compromiso</p>
+      </div>
+    </div>
+    <p class="pricing-note">* Las piezas y recambios necesarios se suman al coste de la reparación. Garantía: 3 meses por escrito en toda reparación. Desplazamiento incluido en el presupuesto sin coste adicional.</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews-bg">
+  <div class="section-inner">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <p class="section-sub">Valoraciones reales de clientes satisfechos en Barcelona y alrededores</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Llamé por la mañana y por la tarde ya tenía al técnico en casa. Reparó la lavadora en menos de una hora. Muy profesional y el precio fue justo."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">María García</div>
+            <div class="review-location">Barcelona</div>
+            <div class="review-appliance">Lavadora</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"El frigorífico dejó de enfriar un viernes. Me atendieron rápidamente, vinieron el sábado y lo dejaron perfecto. Totalmente recomendables."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Josep Martínez</div>
+            <div class="review-location">Hospitalet de Llobregat</div>
+            <div class="review-appliance">Frigorífico</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Servicio excelente. El técnico fue muy amable, explicó todo el proceso y el diagnóstico fue gratuito. El lavavajillas funciona como nuevo."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ana Rodríguez</div>
+            <div class="review-location">Badalona</div>
+            <div class="review-appliance">Lavavajillas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Gran profesionalidad. Vinieron puntual, trajeron el repuesto original y la reparación tiene garantía por escrito. No dudaré en llamarles de nuevo."</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carlos Puig</div>
+            <div class="review-location">Sabadell</div>
+            <div class="review-appliance">Horno</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"La secadora hacía un ruido horrible. El técnico identificó el problema enseguida y la dejó como nueva. Muy contenta con el servicio."</p>
+        <div class="review-author">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">Laura Sánchez</div>
+            <div class="review-location">Terrassa</div>
+            <div class="review-appliance">Secadora</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Reparación rápida y sin sorpresas en el precio. Me explicaron exactamente qué falló y cómo evitarlo en el futuro. Muy recomendable."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Miquel Ferrer</div>
+            <div class="review-location">Cornellà</div>
+            <div class="review-appliance">Campana</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"El horno dejó de calentar justo antes de Navidad. Lo solucionaron en el mismo día. Excelente servicio y muy buena atención al cliente."</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Rosa Tomàs</div>
+            <div class="review-location">Sant Cugat</div>
+            <div class="review-appliance">Horno</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Técnico muy conocedor de la marca Bosch. Detectó el problema de la vitrocerámica a la primera y lo reparó con piezas originales. 100% recomendable."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jordi Valls</div>
+            <div class="review-location">Mataró</div>
+            <div class="review-appliance">Vitrocerámica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Servicio Técnico Bosch Barcelona. Todos los derechos reservados.</p>
+  <p style="margin-top:.5rem;font-size:.78rem;opacity:.6;">Servicio técnico independiente especializado en la marca Bosch. No somos el servicio oficial de Bosch.</p>
+</footer>
+
+<!-- TOAST -->
+<div id="toast"><div class="toast-box" id="toast-box"><div class="toast-title" id="toast-title"></div><div id="toast-msg"></div></div></div>
+
+<script>
+  // ── Data ──
+  const FAULTS = {
+    'Lavadora': ['Se sale el agua','Da saltos o hace mucho ruido','Huele a quemado o salió humo','El lavado no lo hace bien','La ropa sale con mucha agua','No vacía el agua','No enciende','El programador no gira','El centrifugado va lento','El tambor está suelto','No centrifuga','Engancha la ropa y la rompe','Carga agua constantemente','Salta la luz','No cierra bien','El tambor no gira','Otro'],
+    'Lavavajillas': ['No enciende','No llena agua','No desagua','No lava adecuadamente','No disuelve el detergente','Hace ruidos extraños','Fugas de agua','Error en el panel de control','No calienta el agua','Puerta no cierra correctamente','La vajilla queda manchada de cal','No para de cargar agua','Vacía agua constantemente','El lavado dura mucho','Se para a veces','Cestas atascadas o rotas','Otro'],
+    'Frigorífico': ['No enfría','El motor funciona, pero no enfría','Formación excesiva de hielo','Tiene fugas de agua','Enfría demasiado','Puerta que no cierra correctamente','Ventilador averiado','Hace ruido','Pierde gas','Mensaje de error o alarma','Mal olor','Problemas de descongelamiento','Filtro de agua obstruido','Luz interior no funciona','Problemas con el termostato','La goma de la puerta está rota','Otro'],
+    'Horno': ['No se enciende','No alcanza la temperatura deseada','Calor desigual','No calienta la parte superior','No calienta la parte inferior','No calienta nada','Ruidos extraños','Salta el diferencial cuando se enciende','Olor a quemado','Puerta que no cierra correctamente','Luz interior no funciona','Errores en la pantalla o códigos de error','Problemas de temporización','No gira el ventilador de dentro','Otro'],
+    'Secadora': ['Salta la luz','No cierra bien','No se abre la puerta','No enciende','No calienta','Ropa no se seca completamente','Hace ruidos extraños','No gira el tambor','Olor a quemado','Botones o controles no funcionan','No se apaga','Fugas de agua','Luces parpadeantes o códigos de error','Otro'],
+    'Campana': ['Motor averiado','Filtros sucios','Ruido excesivo','La luz no funciona','Se enciende, pero no extrae','No extrae el humo','Hay un cortocircuito','Botones o controles defectuosos','Olor persistente','Instalación inadecuada','Falta de mantenimiento','Otro'],
+    'Vitrocerámica / Placa de Inducción': ['Salta el diferencial','No calienta','Cortocircuitos','Se ha bloqueado','Luz de alarma encendida o mensaje error','Huele a quemado','No detecta la sartén o la olla','No se apaga','Errores en el panel de control','Otro']
+  };
+
+  // ── EmailJS ──
+  const EMAILJS_SERVICE  = 'service_dgblntm';
+  const EMAILJS_TEMPLATE = 'template_gws4txt';
+  const EMAILJS_KEY      = 'hAQrPE6jmCGlt7MOc';
+  const RECAPTCHA_KEY    = '6LfC2HYsAAAAAJsbo_DyUXMIoF7pnh0CWMZ00aSH';
+
+  emailjs.init(EMAILJS_KEY);
+
+  // ── Cookie ──
+  function acceptCookies() {
+    localStorage.setItem('cookieConsent', JSON.stringify({analytics: true, ads: true}));
+    document.getElementById('cookie-banner').style.display = 'none';
+    loadGA();
+  }
+  function rejectCookies() {
+    localStorage.setItem('cookieConsent', JSON.stringify({analytics: false, ads: false}));
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function loadGA() {
+    const s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PYX8VN8SB2';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-PYX8VN8SB2');
+  }
+  (function() {
+    const c = localStorage.getItem('cookieConsent');
+    if (c) {
+      document.getElementById('cookie-banner').style.display = 'none';
+      try { if (JSON.parse(c).analytics) loadGA(); } catch(e) {}
+    }
+  })();
+
+  // ── Faults dropdown ──
+  function updateFaults() {
+    const ap = document.getElementById('appliance').value;
+    const sel = document.getElementById('fault');
+    sel.innerHTML = '<option value="">Seleccione una avería</option>';
+    if (ap && FAULTS[ap]) {
+      FAULTS[ap].forEach(f => { const o = document.createElement('option'); o.value = f; o.textContent = f; sel.appendChild(o); });
+      sel.disabled = false;
+    } else {
+      sel.disabled = true;
+      sel.innerHTML = '<option value="">Seleccione primero el electrodoméstico</option>';
+    }
+    clearError('f-appliance');
+  }
+
+  function preselectAppliance(ap) {
+    const sel = document.getElementById('appliance');
+    sel.value = ap;
+    updateFaults();
+  }
+
+  // ── Validation helpers ──
+  function setError(id, show) {
+    const el = document.getElementById(id);
+    if (show) el.classList.add('has-error'); else el.classList.remove('has-error');
+  }
+  function clearError(id) { setError(id, false); }
+
+  function validateStep1() {
+    let ok = true;
+    const ap = document.getElementById('appliance').value;
+    const ft = document.getElementById('fault').value;
+    const pc = document.getElementById('postalCode').value;
+    if (!ap) { setError('f-appliance', true); ok = false; } else clearError('f-appliance');
+    if (!ft) { setError('f-fault', true); ok = false; } else clearError('f-fault');
+    if (!pc || pc.length !== 5 || !/^\d{5}$/.test(pc)) { setError('f-postal', true); ok = false; } else clearError('f-postal');
+    return ok;
+  }
+
+  function validateStep2() {
+    let ok = true;
+    const name = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.replace(/\D/g,'');
+    const addr = document.getElementById('address').value.trim();
+    const consent = document.getElementById('contactConsent').checked;
+    if (!name) { setError('f-name', true); ok = false; } else clearError('f-name');
+    if (phone.length !== 9) { setError('f-phone', true); ok = false; } else clearError('f-phone');
+    if (!addr) { setError('f-address', true); ok = false; } else clearError('f-address');
+    if (!consent) { setError('f-consent', true); ok = false; } else clearError('f-consent');
+    return ok;
+  }
+
+  // ── Navigation ──
+  function goStep2() {
+    if (!validateStep1()) return;
+    document.getElementById('form-step1').classList.add('hidden');
+    document.getElementById('form-step2').classList.remove('hidden');
+    document.getElementById('contacto').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function goStep1() {
+    document.getElementById('form-step2').classList.add('hidden');
+    document.getElementById('form-step1').classList.remove('hidden');
+    document.getElementById('contacto').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ── Submit ──
+  async function submitForm() {
+    if (!validateStep2()) return;
+
+    const btn = document.getElementById('btn-submit');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Enviando...';
+
+    try {
+      let token = null;
+      if (typeof grecaptcha !== 'undefined') {
+        token = await new Promise(res => {
+          grecaptcha.ready(() => grecaptcha.execute(RECAPTCHA_KEY, {action:'submit_form'}).then(res).catch(() => res(null)));
+        });
       }
-    </script>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <title>Servicio Técnico Bosch - Reparación de Electrodomésticos</title>
-    <meta name="keywords" content="servicio de bosch barcelona, servicio oficial bosch, bosch service oficial, asistencia bosch, bosch servei tecnic, bosch and service, bosch repair service, servicio bosch, bosch tecnico barcelona, bosch tecnico, bosch barcelona, servicio técnico bosch barcelona, reparación electrodomésticos barcelona, técnico electrodomésticos barcelona" />
-    <script type="module" crossorigin src="./assets/index-7j1J0iol.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DE6XOi6t.css">
-    <script type="module">
-window.onerror = (message, source, lineno, colno, errorObj) => {
-	const errorDetails = errorObj ? JSON.stringify({
-		name: errorObj.name,
-		message: errorObj.message,
-		stack: errorObj.stack,
-		source,
-		lineno,
-		colno,
-	}) : null;
 
-	window.parent.postMessage({
-		type: 'horizons-runtime-error',
-		message,
-		error: errorDetails
-	}, '*');
-};
+      const ref = 'REF-' + Date.now().toString().slice(-8);
+      const now = new Date();
+      const ts = now.toLocaleDateString('es-ES') + ' ' + now.toLocaleTimeString('es-ES');
+      const phone = document.getElementById('phone').value;
+
+      const params = {
+        fullName: document.getElementById('fullName').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        postalCode: document.getElementById('postalCode').value,
+        phone: phone,
+        appliance: document.getElementById('appliance').value,
+        fault: document.getElementById('fault').value,
+        referenceNumber: ref,
+        timestamp: ts,
+        recaptcha_token: token || 'no-token',
+        brand: 'Bosch',
+        subject_line: '[BOSCH] Nueva solicitud - ' + document.getElementById('appliance').value
+      };
+
+      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, params);
+
+      document.getElementById('form-step2').classList.add('hidden');
+      document.getElementById('success-phone').textContent = phone;
+      document.getElementById('success-ref').textContent = ref;
+      document.getElementById('form-success').classList.remove('hidden');
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {'send_to': 'AW-18125424540/f9zMCPmvo6QcEJyP8MJD'});
+      }
+    } catch(e) {
+      showToast('Error al enviar', 'No se pudo enviar la solicitud. Por favor, inténtelo de nuevo.', true);
+      btn.disabled = false;
+      btn.textContent = 'Enviar Solicitud';
+    }
+  }
+
+  // ── Toast ──
+  function showToast(title, msg, isError) {
+    const t = document.getElementById('toast');
+    const b = document.getElementById('toast-box');
+    document.getElementById('toast-title').textContent = title;
+    document.getElementById('toast-msg').textContent = msg;
+    b.className = 'toast-box' + (isError ? ' error' : '');
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 5000);
+  }
 </script>
-    <script type="module">
-const observer = new MutationObserver((mutations) => {
-	for (const mutation of mutations) {
-		for (const addedNode of mutation.addedNodes) {
-			if (
-				addedNode.nodeType === Node.ELEMENT_NODE &&
-				(
-					addedNode.tagName?.toLowerCase() === 'vite-error-overlay' ||
-					addedNode.classList?.contains('backdrop')
-				)
-			) {
-				handleViteOverlay(addedNode);
-			}
-		}
-	}
-});
-
-observer.observe(document.documentElement, {
-	childList: true,
-	subtree: true
-});
-
-function handleViteOverlay(node) {
-	if (!node.shadowRoot) {
-		return;
-	}
-
-	const backdrop = node.shadowRoot.querySelector('.backdrop');
-
-	if (backdrop) {
-		const overlayHtml = backdrop.outerHTML;
-		const parser = new DOMParser();
-		const doc = parser.parseFromString(overlayHtml, 'text/html');
-		const messageBodyElement = doc.querySelector('.message-body');
-		const fileElement = doc.querySelector('.file');
-		const messageText = messageBodyElement ? messageBodyElement.textContent.trim() : '';
-		const fileText = fileElement ? fileElement.textContent.trim() : '';
-		const error = messageText + (fileText ? ' File:' + fileText : '');
-
-		window.parent.postMessage({
-			type: 'horizons-vite-error',
-			error,
-		}, '*');
-	}
-}
-</script>
-    <script type="module">
-const originalConsoleError = console.error;
-console.error = function(...args) {
-	originalConsoleError.apply(console, args);
-
-	let errorString = '';
-
-	for (let i = 0; i < args.length; i++) {
-		const arg = args[i];
-		if (arg instanceof Error) {
-			errorString = arg.stack || `${arg.name}: ${arg.message}`;
-			break;
-		}
-	}
-
-	if (!errorString) {
-		errorString = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ');
-	}
-
-	window.parent.postMessage({
-		type: 'horizons-console-error',
-		error: errorString
-	}, '*');
-};
-</script>
-    <script type="module">
-const originalFetch = window.fetch;
-
-window.fetch = function(...args) {
-	const url = args[0] instanceof Request ? args[0].url : args[0];
-
-	// Skip WebSocket URLs
-	if (url.startsWith('ws:') || url.startsWith('wss:')) {
-		return originalFetch.apply(this, args);
-	}
-
-	return originalFetch.apply(this, args)
-		.then(async response => {
-			const contentType = response.headers.get('Content-Type') || '';
-
-			// Exclude HTML document responses
-			const isDocumentResponse =
-				contentType.includes('text/html') ||
-				contentType.includes('application/xhtml+xml');
-
-			if (!response.ok && !isDocumentResponse) {
-					const responseClone = response.clone();
-					const errorFromRes = await responseClone.text();
-					const requestUrl = response.url;
-					console.error(`Fetch error from ${requestUrl}: ${errorFromRes}`);
-			}
-
-			return response;
-		})
-		.catch(error => {
-			if (!url.match(/.html?$/i)) {
-				console.error(error);
-			}
-
-			throw error;
-		});
-};
-</script>
-    <script type="module">
-if (window.navigation && window.self !== window.top) {
-	window.navigation.addEventListener('navigate', (event) => {
-		const url = event.destination.url;
-
-		try {
-			const destinationUrl = new URL(url);
-			const destinationOrigin = destinationUrl.origin;
-			const currentOrigin = window.location.origin;
-
-			if (destinationOrigin === currentOrigin) {
-				return;
-			}
-		} catch (error) {
-			return;
-		}
-
-		window.parent.postMessage({
-			type: 'horizons-navigation-error',
-			url,
-		}, '*');
-	});
-}
-</script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF473QQQ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
-  </body>
+</body>
 </html>
