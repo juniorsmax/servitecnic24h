@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /assets/
 
 Sitemap: https://servitecnic24h.com/sitemap.xml
