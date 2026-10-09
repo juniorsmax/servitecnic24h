@@ -1,0 +1,33 @@
+{
+  "_nota": "Datos del negocio. Lo marcado PENDIENTE se rellena cuando lo tengas. Después: npm run build.",
+  "nombre": "Técnico Electrodomésticos BCN",
+  "nombreCorto": "TécnicoBCN",
+  "dominio": "https://PENDIENTE-DOMINIO.com",
+  "ciudad": "Barcelona",
+  "experiencia": "más de 20 años",
+  "telefono": "",
+  "telefonoVisible": "93 XXX XX XX",
+  "whatsapp": "",
+  "email": "PENDIENTE@PENDIENTE-DOMINIO.com",
+  "horario": "Lunes a viernes de 9:00 a 19:00 · Sábados de 9:00 a 14:00",
+  "horarioSchema": ["Mo-Fr 09:00-19:00", "Sa 09:00-14:00"],
+  "garantiaMeses": 3,
+  "titular": {
+    "nombre": "PENDIENTE (nombre o razón social)",
+    "nif": "PENDIENTE",
+    "direccion": "PENDIENTE (dirección completa)",
+    "registro": ""
+  },
+  "endpoints": {
+    "solicitud": "",
+    "chat": ""
+  },
+  "analitica": {
+    "gtm": "",
+    "ga4": "",
+    "googleAds": "",
+    "googleAdsConversion": "",
+    "clarity": ""
+  },
+  "turnstileSiteKey": ""
+}

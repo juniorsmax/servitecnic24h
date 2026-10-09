@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "lavadoras",
+    "nombre": "Lavadoras",
+    "singular": "lavadora",
+    "articulo": "tu lavadora",
+    "icono": "lavadora",
+    "intro": "Una lavadora que no centrifuga, no desagua o pierde agua se suele poder reparar en una sola visita. Revisamos bomba de desagüe, motor, escobillas, rodamientos, cierre de puerta, electroválvulas y placa electrónica.",
+    "averias": [
+      {"titulo": "No centrifuga", "texto": "Suele deberse a un filtro de desagüe obstruido, a la carga mal repartida, a escobillas del motor gastadas o a un fallo del módulo de control."},
+      {"titulo": "No desagua", "texto": "Lo más habitual es el filtro de la bomba lleno de restos (monedas, horquillas, pelusa) o la propia bomba de desagüe averiada."},
+      {"titulo": "Pierde agua", "texto": "Puede venir del fuelle o goma de la puerta, de un manguito suelto, del dosificador o de la bomba. Conviene cortar el agua hasta que la revisemos."},
+      {"titulo": "Hace mucho ruido al centrifugar", "texto": "El ruido fuerte y metálico suele indicar rodamientos desgastados o amortiguadores en mal estado."},
+      {"titulo": "No calienta el agua", "texto": "Normalmente es la resistencia o la sonda de temperatura (NTC). La ropa sale fría y los programas tardan más."},
+      {"titulo": "La puerta no abre o no cierra", "texto": "Suele ser el blocapuertas (cierre electromagnético) o la maneta. No fuerces la puerta: puede romperse el cierre."}
+    ],
+    "piezas": ["bomba de desagüe", "escobillas y motor", "rodamientos y retén", "amortiguadores", "blocapuertas", "resistencia y sonda NTC", "electroválvula de entrada", "módulo electrónico"],
+    "consejos": ["Limpia el filtro de la bomba cada 2 o 3 meses.", "No sobrecargues el tambor: reduce la vida de los rodamientos.", "Deja la puerta entreabierta tras lavar para evitar malos olores."]
+  },
+  {
+    "slug": "lavavajillas",
+    "nombre": "Lavavajillas",
+    "singular": "lavavajillas",
+    "articulo": "tu lavavajillas",
+    "icono": "lavavajillas",
+    "intro": "Si tu lavavajillas no lava bien, no desagua o muestra un código de error, lo diagnosticamos en casa. Trabajamos con bombas de lavado y desagüe, resistencias, sistema antifugas, cerraduras y placas.",
+    "averias": [
+      {"titulo": "No desagua y queda agua en el fondo", "texto": "Suele ser el filtro sucio, el manguito doblado o la bomba de desagüe bloqueada por un resto de vajilla."},
+      {"titulo": "No lava bien", "texto": "Brazos aspersores obstruidos, poca sal o abrillantador, o un fallo en la bomba de lavado."},
+      {"titulo": "No calienta ni seca", "texto": "Habitualmente es la resistencia (integrada en la bomba de calor en muchos modelos) o el sensor de temperatura."},
+      {"titulo": "Se para y marca error de agua", "texto": "Puede saltar el sistema antifugas por agua en la base. Hay que localizar la fuga antes de volver a usarlo."},
+      {"titulo": "La puerta no cierra o cae de golpe", "texto": "Cerradura o muelles y cables de la bisagra desgastados. Se cambian en una visita."}
+    ],
+    "piezas": ["bomba de desagüe", "bomba de calor / resistencia", "sistema antifugas", "cerradura de puerta", "muelles y cables de bisagra", "brazos aspersores", "módulo electrónico"],
+    "consejos": ["Limpia el filtro del fondo una vez al mes.", "Usa sal y abrillantador si tu agua es dura, como en Barcelona.", "Pasa un programa de limpieza vacío cada pocos meses."]
+  },
+  {
+    "slug": "termos-electricos",
+    "nombre": "Termos eléctricos",
+    "singular": "termo eléctrico",
+    "articulo": "tu termo",
+    "icono": "termo",
+    "intro": "Un termo que no calienta, gotea o salta la luz necesita una revisión cuanto antes. Comprobamos resistencia, termostato, ánodo de magnesio, válvula de seguridad y conexiones.",
+    "averias": [
+      {"titulo": "No calienta el agua", "texto": "La causa más común es la resistencia quemada o el termostato averiado. También puede haber saltado el limitador de seguridad."},
+      {"titulo": "Salta el diferencial", "texto": "Suele indicar una resistencia derivada a tierra. No lo rearmes varias veces: llámanos."},
+      {"titulo": "Gotea la válvula de seguridad", "texto": "Un goteo leve al calentar puede ser normal. Si gotea siempre, la válvula está dañada o la presión de la red es alta."},
+      {"titulo": "El agua sale turbia o huele mal", "texto": "Suele ser el ánodo de magnesio agotado y acumulación de cal. Se cambia el ánodo y se limpia el depósito."},
+      {"titulo": "Tarda mucho en calentar", "texto": "La cal en la resistencia reduce mucho su rendimiento. Una limpieza y cambio de resistencia lo soluciona."}
+    ],
+    "piezas": ["resistencia", "termostato", "limitador de seguridad", "ánodo de magnesio", "válvula de seguridad", "juntas"],
+    "consejos": ["Revisa el ánodo de magnesio cada 2 años.", "Acciona la válvula de seguridad una vez al mes.", "Con agua dura, una descalcificación periódica alarga su vida."]
+  },
+  {
+    "slug": "hornos",
+    "nombre": "Hornos",
+    "singular": "horno",
+    "articulo": "tu horno",
+    "icono": "horno",
+    "intro": "Si tu horno no calienta, calienta de forma desigual o no se apaga el ventilador, lo reparamos en tu domicilio. Revisamos resistencias, ventilador, termostato, sonda, cerradura de pirólisis y electrónica.",
+    "averias": [
+      {"titulo": "No calienta", "texto": "Lo más habitual es una resistencia cortada (superior, inferior o circular) o la sonda de temperatura."},
+      {"titulo": "Calienta poco o de forma desigual", "texto": "Puede fallar una de las resistencias o el ventilador del aire caliente."},
+      {"titulo": "El ventilador sigue funcionando", "texto": "El ventilador de enfriamiento sigue un rato tras apagar, y es normal. Si no se para nunca, falla el termostato o la electrónica."},
+      {"titulo": "La puerta no abre tras la pirólisis", "texto": "La cerradura motorizada puede quedarse bloqueada. No la fuerces."},
+      {"titulo": "Salta la luz al encenderlo", "texto": "Suele ser una resistencia derivada. Requiere revisión técnica."}
+    ],
+    "piezas": ["resistencia superior, inferior y circular", "ventilador", "sonda de temperatura", "termostato", "cerradura de pirólisis", "junta de puerta", "módulo electrónico"],
+    "consejos": ["No uses productos abrasivos en el cristal.", "Revisa que la junta de la puerta cierre bien para no perder calor."]
+  },
+  {
+    "slug": "placas-induccion-vitroceramica",
+    "nombre": "Placas de inducción y vitrocerámica",
+    "singular": "placa",
+    "articulo": "tu placa",
+    "icono": "placa",
+    "intro": "Reparamos placas de inducción y vitrocerámicas que no encienden, tienen una zona que no calienta o muestran errores. Trabajamos con módulos de potencia, bobinas, resistencias radiantes, teclados táctiles y ventiladores.",
+    "averias": [
+      {"titulo": "Una zona no calienta", "texto": "En vitrocerámica suele ser la resistencia radiante. En inducción, la bobina o el módulo de potencia de esa zona."},
+      {"titulo": "No detecta el recipiente (inducción)", "texto": "Comprueba que el recipiente sea apto para inducción. Si lo es, puede fallar el módulo de potencia."},
+      {"titulo": "No enciende o no responde al tacto", "texto": "Puede estar activo el bloqueo infantil, o fallar el teclado táctil o la alimentación."},
+      {"titulo": "Salta la luz al encenderla", "texto": "Suele indicar un componente de potencia derivado. No la uses hasta revisarla."},
+      {"titulo": "Cristal agrietado", "texto": "Si el cristal está roto, deja de usar la placa. Se puede sustituir el cristal en muchos modelos."}
+    ],
+    "piezas": ["módulo de potencia", "bobinas de inducción", "resistencias radiantes", "teclado táctil", "ventilador de refrigeración", "cristal vitrocerámico"],
+    "consejos": ["Usa recipientes de fondo plano y del tamaño de la zona.", "Limpia el cristal en frío con rasqueta y producto específico."]
+  }
+]

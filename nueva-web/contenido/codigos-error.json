@@ -1,0 +1,18 @@
+{
+  "aviso": "Los códigos son orientativos. Varían según el modelo y el año. En muchos modelos aparecen como E18, E:18 o F18.",
+  "lavadoras": [
+    {"codigo": "F16 / E16", "significado": "La puerta no está bien cerrada o el programa no ha arrancado.", "queHacer": "Cierra bien la puerta y vuelve a pulsar inicio. Si sigue, puede fallar el blocapuertas."},
+    {"codigo": "F17 / E17", "significado": "El agua entra demasiado despacio o no entra.", "queHacer": "Comprueba que el grifo esté abierto y el filtro de la toma de agua limpio."},
+    {"codigo": "F18 / E18", "significado": "La lavadora no desagua o desagua muy lento.", "queHacer": "Limpia el filtro de la bomba (abajo, delante). Si persiste, la bomba puede estar averiada."},
+    {"codigo": "F21 / E21", "significado": "Problema con el motor o el tambor bloqueado.", "queHacer": "Apaga, desenchufa y comprueba que el tambor gire a mano. Si sigue, revisión de motor o escobillas."},
+    {"codigo": "F23 / E23", "significado": "Ha saltado el sistema antifugas: hay agua en la base.", "queHacer": "Corta el agua y desenchufa. Hay que localizar la fuga."},
+    {"codigo": "F43", "significado": "El tambor no gira.", "queHacer": "Necesita revisión de motor, escobillas o electrónica."}
+  ],
+  "lavavajillas": [
+    {"codigo": "E09", "significado": "Fallo en el calentamiento (bomba de calor o resistencia).", "queHacer": "Requiere revisión de la bomba de calor y su conexión."},
+    {"codigo": "E15", "significado": "Ha saltado el sistema antifugas: hay agua en la base.", "queHacer": "Desenchufa, cierra el agua y llámanos. Hay que encontrar la fuga."},
+    {"codigo": "E22", "significado": "Filtros obstruidos.", "queHacer": "Limpia los filtros del fondo y vuelve a probar."},
+    {"codigo": "E24", "significado": "El agua no sale bien: manguito doblado o desagüe obstruido.", "queHacer": "Revisa el manguito de desagüe y el sifón del fregadero."},
+    {"codigo": "E25", "significado": "Bomba de desagüe bloqueada.", "queHacer": "Retira los filtros y comprueba la tapa de la bomba. Si no gira, hay que cambiarla."}
+  ]
+}

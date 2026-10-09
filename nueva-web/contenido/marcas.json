@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "bosch",
+    "nombre": "Bosch",
+    "intro": "Bosch es una de las marcas de electrodomésticos más presentes en los hogares de Barcelona. Llevamos más de 20 años reparando sus lavadoras, lavavajillas, hornos, placas y termos, y conocemos bien sus averías más habituales.",
+    "nota": "Bosch, Siemens y Balay pertenecen al mismo grupo fabricante, BSH. Por eso muchos de sus componentes son iguales o muy parecidos, y nuestra experiencia con una marca nos sirve para las otras dos."
+  },
+  {
+    "slug": "siemens",
+    "nombre": "Siemens",
+    "intro": "Los electrodomésticos Siemens destacan por su tecnología y sus acabados. En nuestro taller trabajamos con ellos a diario desde hace más de 20 años: diagnosticamos la avería en tu domicilio y la reparamos con repuestos originales.",
+    "nota": "Los electrodomésticos Siemens los fabrica el grupo BSH, el mismo que fabrica Bosch y Balay. Comparten muchas piezas y sistemas, lo que nos permite tener a mano los repuestos más habituales."
+  },
+  {
+    "slug": "balay",
+    "nombre": "Balay",
+    "intro": "Balay es una marca nacida en Zaragoza y una de las más vendidas en España. Reparamos electrodomésticos Balay en Barcelona desde hace más de 20 años, con técnicos formados y repuestos originales.",
+    "nota": "Balay forma parte del grupo BSH, igual que Bosch y Siemens. Muchos modelos de las tres marcas comparten motores, bombas, placas electrónicas y resistencias."
+  }
+]

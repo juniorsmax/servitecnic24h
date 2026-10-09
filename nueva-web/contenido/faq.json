@@ -1,0 +1,10 @@
+[
+  {"p": "¿Sois el servicio técnico oficial de Bosch, Siemens o Balay?", "r": "No. Somos un servicio técnico independiente, especializado en estas tres marcas, con más de 20 años de experiencia. Usamos repuestos originales y nuestros técnicos están formados en sus equipos.", "claves": ["oficial", "autorizado", "marca"]},
+  {"p": "¿Usáis repuestos originales?", "r": "Sí. Trabajamos con repuestos originales del fabricante para que la reparación dure.", "claves": ["repuesto", "pieza", "original", "recambio"]},
+  {"p": "¿Cuánto cuesta la reparación?", "r": "Depende de la avería y de la pieza. El técnico hace el diagnóstico en tu domicilio y te da el presupuesto antes de reparar. No se hace nada sin tu aprobación.", "claves": ["precio", "cuesta", "coste", "presupuesto", "cuanto", "tarifa"]},
+  {"p": "¿Tienen garantía las reparaciones?", "r": "Sí. Todas las reparaciones tienen garantía por escrito de {garantia} meses sobre la mano de obra y la pieza cambiada.", "claves": ["garantia", "garantía"]},
+  {"p": "¿En qué zonas trabajáis?", "r": "Barcelona ciudad y área metropolitana: L'Hospitalet, Badalona, Cornellà, Sant Cugat, Sabadell, Terrassa, Mataró y alrededores. Indícanos tu código postal y te confirmamos.", "claves": ["zona", "donde", "dónde", "codigo postal", "venis", "venís", "municipio"]},
+  {"p": "¿Cuándo podéis venir?", "r": "Normalmente en 24 a 48 horas, y muchas veces el mismo día. Al enviar tu solicitud te llamamos para fijar la hora.", "claves": ["cuando", "cuándo", "hoy", "urgente", "cita", "hora", "dia", "día"]},
+  {"p": "¿Reparáis en el domicilio?", "r": "Sí. La gran mayoría de reparaciones se hacen en tu casa en una sola visita.", "claves": ["domicilio", "casa", "taller"]},
+  {"p": "¿Vale la pena reparar o mejor comprar uno nuevo?", "r": "En la mayoría de casos reparar sale más a cuenta. Si la reparación no compensa por la edad o el coste, te lo diremos con sinceridad.", "claves": ["vale la pena", "comprar", "nuevo", "compensa"]}
+]

@@ -1,0 +1,25 @@
+# Configuración del servidor en Cloudflare Workers.
+# Claves secretas (se ponen con: npx wrangler secret put NOMBRE):
+#   ANTHROPIC_API_KEY  -> clave de la API de Claude (para el chat)
+#   TURNSTILE_SECRET   -> clave secreta de Cloudflare Turnstile (anti-spam)
+#   RESEND_API_KEY     -> clave de Resend (para recibir las solicitudes por correo)
+name = "web-electrodomesticos-api"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Dominio(s) de la web, separados por comas. PENDIENTE: poner el dominio real.
+ORIGENES_PERMITIDOS = "https://PENDIENTE-DOMINIO.com,https://www.PENDIENTE-DOMINIO.com"
+# Correo donde llegan las solicitudes y remitente verificado en Resend. PENDIENTE.
+AVISO_EMAIL = "PENDIENTE@PENDIENTE-DOMINIO.com"
+REMITENTE_EMAIL = "Web <avisos@PENDIENTE-DOMINIO.com>"
+# Opcional: URL a la que enviar cada solicitud (Google Sheets, Make, CRM...).
+WEBHOOK_URL = ""
+# Modelo de Claude para el chat.
+MODELO = "claude-opus-5-5"
+
+# Opcional: estadísticas sin datos personales (para el mapa por código postal).
+# Crear con: npx wrangler kv namespace create ESTADISTICAS  y pegar aquí el id.
+# [[kv_namespaces]]
+# binding = "ESTADISTICAS"
+# id = "PENDIENTE"
