@@ -159,11 +159,6 @@ h3 { font-size: 1.1rem; margin: 0 0 .4em; }
 .formulario { background: var(--blanco); border-radius: 18px; box-shadow: 0 10px 40px rgba(15, 42, 68, .14); padding: 24px; border-top: 5px solid var(--verde); }
 .formulario__cabecera h2 { margin-bottom: 4px; }
 .formulario__cabecera p { margin: 0 0 12px; color: var(--suave); }
-.progreso { height: 6px; background: var(--fondo); border-radius: 99px; overflow: hidden; }
-.progreso__barra { display: block; height: 100%; width: 33%; background: var(--verde); transition: width .25s; }
-.progreso__texto { font-size: .85rem; color: var(--suave); margin: 6px 0 0 !important; }
-.paso { border: 0; padding: 0; margin: 16px 0 0; display: grid; gap: 14px; }
-.paso legend { font-weight: 700; color: var(--azul); margin-bottom: 4px; font-size: 1.05rem; }
 .formulario label { display: grid; gap: 6px; font-weight: 600; font-size: .95rem; }
 .formulario input, .formulario select, .formulario textarea {
   font: inherit; font-weight: 400; padding: 12px 14px; border: 2px solid var(--borde); border-radius: 10px; background: var(--blanco); color: var(--texto); width: 100%;
@@ -173,13 +168,7 @@ h3 { font-size: 1.1rem; margin: 0 0 .4em; }
 .formulario .casilla { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: .92rem; }
 .formulario .casilla input { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
 .formulario__error { color: var(--error); font-weight: 600; margin: 14px 0 0; }
-.formulario__botones { display: flex; gap: 10px; justify-content: space-between; margin-top: 20px; flex-wrap: wrap; }
-.formulario__botones .boton { flex: 1; }
 .formulario__alternativa { font-size: .9rem; color: var(--suave); text-align: center; margin: 14px 0 0; }
-/* Con JavaScript, el formulario va paso a paso */
-.js .paso:not(.activo) { display: none; }
-.js .formulario__botones [data-anterior][hidden], .js .formulario__botones [data-siguiente][hidden], .js .formulario__botones [data-enviar][hidden] { display: none; }
-html:not(.js) [data-anterior], html:not(.js) [data-siguiente], html:not(.js) .progreso { display: none; }
 
 /* Pie */
 .pie { background: var(--azul); color: #c9d6e3; margin-top: 48px; padding: 48px 0 24px; font-size: .95rem; }
@@ -228,3 +217,14 @@ html:not(.js) [data-anterior], html:not(.js) [data-siguiente], html:not(.js) .pr
 .bot__entrada input { flex: 1; font: inherit; padding: 10px 12px; border: 2px solid var(--borde); border-radius: 99px; min-width: 0; }
 .bot__entrada button { border: 0; background: var(--verde); color: var(--blanco); border-radius: 99px; padding: 0 16px; font: inherit; font-weight: 700; cursor: pointer; }
 .bot__aviso { font-size: .72rem; color: var(--suave); padding: 0 12px 8px; margin: 0; }
+
+.aviso-enr { background: #fff8e6; border: 1px solid #f6d58a; border-radius: var(--radio); padding: 20px 22px; }
+.aviso-enr h2 { font-size: 1.3rem; margin-bottom: .4em; }
+.aviso-enr p { margin: 0 0 8px; }
+
+.formulario__campos { display: grid; gap: 14px; margin-top: 16px; }
+.fila-2 { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.fila-dir { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 480px) { .fila-dir { grid-template-columns: 2fr 1fr; } }
+.opcional { font-weight: 400; color: var(--suave); }
+.formulario__enviar { width: 100%; margin-top: 18px; }

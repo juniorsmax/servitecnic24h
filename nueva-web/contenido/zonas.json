@@ -1,0 +1,11 @@
+{
+  "_nota": "Zona de servicio. Se usa en el mapa y para exportar los códigos postales a Google Ads. Edita la lista cuando quieras.",
+  "municipios": [
+    "Barcelona", "Hospitalet de Llobregat, L'", "Badalona", "Santa Coloma de Gramenet", "Sant Adrià de Besòs", "Montgat",
+    "Cornellà de Llobregat", "Esplugues de Llobregat", "Sant Just Desvern", "Sant Joan Despí", "Sant Feliu de Llobregat",
+    "Sant Boi de Llobregat", "Prat de Llobregat, El", "Viladecans", "Gavà", "Castelldefels",
+    "Sant Cugat del Vallès", "Cerdanyola del Vallès", "Ripollet", "Rubí", "Sabadell", "Terrassa", "Mataró"
+  ],
+  "cpExtra": ["08750"],
+  "nombresCorregidos": { "08750": "Molins de Rei" }
+}

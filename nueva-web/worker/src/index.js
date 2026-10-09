@@ -19,13 +19,21 @@ export default {
     const permitido = (env.ORIGENES_PERMITIDOS || "").split(",").map((s) => s.trim()).filter(Boolean);
     const cors = {
       "Access-Control-Allow-Origin": permitido.includes(origen) ? origen : permitido[0] || "",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
       Vary: "Origin"
     };
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
-    if (request.method !== "POST") return json({ error: "Método no permitido" }, 405, cors);
     if (!permitido.includes(origen)) return json({ error: "Origen no permitido" }, 403, cors);
+    if (request.method === "GET" && url.pathname === "/api/estadisticas") {
+      try {
+        return await estadisticas(request, url, env, cors);
+      } catch (e) {
+        console.error(e);
+        return json({ error: "Error interno" }, 500, cors);
+      }
+    }
+    if (request.method !== "POST") return json({ error: "Método no permitido" }, 405, cors);
 
     let cuerpo;
     try {
@@ -56,8 +64,8 @@ async function solicitud(d, request, env, cors) {
   const s = {
     aparato: texto(d.aparato, 40),
     marca: texto(d.marca, 20),
-    averia: texto(d.averia, 80),
-    detalle: texto(d.detalle, 600),
+    averia: texto(d.averia, 200),
+    direccion: texto(d.direccion, 120),
     cp: texto(d.cp, 5),
     nombre: texto(d.nombre, 80),
     telefono: texto(d.telefono, 13).replace(/[\s.-]/g, ""),
@@ -73,6 +81,7 @@ async function solicitud(d, request, env, cors) {
   if (!MARCAS.has(s.marca)) errores.push("marca");
   if (!/^0\d{4}$/.test(s.cp)) errores.push("cp");
   if (s.nombre.length < 2) errores.push("nombre");
+  if (s.direccion.length < 5) errores.push("direccion");
   if (!/^(\+34)?[6789]\d{8}$/.test(s.telefono)) errores.push("telefono");
   if (d.consentimiento !== true) errores.push("consentimiento");
   if (errores.length) return json({ error: "Datos no válidos", campos: errores }, 422, cors);
@@ -92,11 +101,11 @@ async function solicitud(d, request, env, cors) {
   const resumen = [
     `Nueva solicitud (${fecha})`,
     `Aparato: ${s.aparato} · Marca: ${s.marca}`,
-    `Avería: ${s.averia}`,
-    s.detalle && `Detalle: ${s.detalle}`,
     `Nombre: ${s.nombre}`,
     `Teléfono: ${s.telefono}`,
-    `Código postal: ${s.cp}`,
+    `Dirección: ${s.direccion} (CP ${s.cp})`,
+    s.averia && `Avería: ${s.averia}`,
+    "Pendiente: pedir el E-Nr (foto de la etiqueta) por WhatsApp.",
     `Página: ${s.pagina}`,
     Object.keys(s.origen).length && `Origen: ${JSON.stringify(s.origen)}`
   ]
@@ -130,11 +139,49 @@ async function solicitud(d, request, env, cors) {
   resultados.filter((r) => r.status === "rejected").forEach((r) => console.error(r.reason));
 
   // Estadística sin datos personales (para el mapa por código postal).
+  // Los datos van en los metadatos para poder listarlos sin leer clave por clave.
   if (env.ESTADISTICAS) {
     const clave = `s:${fecha}:${crypto.randomUUID().slice(0, 8)}`;
-    await env.ESTADISTICAS.put(clave, JSON.stringify({ cp: s.cp, aparato: s.aparato, marca: s.marca, fecha, origen: s.origen }));
+    const metadata = { cp: s.cp, aparato: s.aparato, marca: s.marca, campana: texto(s.origen.utm_campaign, 60) };
+    await env.ESTADISTICAS.put(clave, "", { metadata });
   }
   return json({ ok: true }, 200, cors);
+}
+
+// ---------- Estadísticas para el mapa (solo con la clave del panel) ----------
+async function estadisticas(request, url, env, cors) {
+  const auth = request.headers.get("Authorization") || "";
+  if (!env.PANEL_TOKEN || !(await igualSeguro(auth, `Bearer ${env.PANEL_TOKEN}`))) return json({ error: "No autorizado" }, 401, cors);
+  if (!env.ESTADISTICAS) return json({ error: "Estadísticas no activadas" }, 501, cors);
+  const dias = Math.min(Math.max(parseInt(url.searchParams.get("dias"), 10) || 90, 1), 730);
+  const desde = new Date(Date.now() - dias * 86400000).toISOString();
+  const porCp = {};
+  let total = 0;
+  let cursor;
+  do {
+    const pagina = await env.ESTADISTICAS.list({ prefix: "s:", cursor });
+    for (const k of pagina.keys) {
+      if (k.name.slice(2) < desde || !k.metadata) continue;
+      const { cp, aparato, marca } = k.metadata;
+      const fila = (porCp[cp] ||= { total: 0, aparatos: {}, marcas: {} });
+      fila.total++;
+      fila.aparatos[aparato] = (fila.aparatos[aparato] || 0) + 1;
+      fila.marcas[marca] = (fila.marcas[marca] || 0) + 1;
+      total++;
+    }
+    cursor = pagina.list_complete ? undefined : pagina.cursor;
+  } while (cursor);
+  return json({ dias, total, porCp }, 200, { ...cors, "Cache-Control": "no-store" });
+}
+
+// Comparación en tiempo constante para no filtrar la clave por tiempos de respuesta.
+async function igualSeguro(a, b) {
+  const enc = new TextEncoder();
+  const [ha, hb] = await Promise.all([crypto.subtle.digest("SHA-256", enc.encode(a)), crypto.subtle.digest("SHA-256", enc.encode(b))]);
+  const x = new Uint8Array(ha), y = new Uint8Array(hb);
+  let r = 0;
+  for (let i = 0; i < x.length; i++) r |= x[i] ^ y[i];
+  return r === 0;
 }
 
 // ---------- Chat con IA ----------
@@ -154,7 +201,7 @@ const BASE_CONOCIMIENTO = JSON.stringify({
   faq
 });
 
-const INSTRUCCIONES = `Eres el asistente de averías de la web de ${sitio.nombre}, un servicio técnico independiente que repara electrodomésticos Bosch, Siemens y Balay (lavadoras, lavavajillas, termos eléctricos, hornos y placas de inducción o vitrocerámica) en ${sitio.ciudad} y alrededores.
+const INSTRUCCIONES = `Eres el asistente de averías de la web de ${sitio.nombre}, un servicio técnico independiente que repara electrodomésticos Bosch, Siemens y Balay (${aparatos.map((x) => x.nombre.toLowerCase()).join(", ")}) en ${sitio.ciudad} y alrededores.
 
 Cómo responder:
 - En español, con frases cortas y tono cercano. Máximo 4 frases.
@@ -163,6 +210,7 @@ Cómo responder:
 - Si hay riesgo (olor a quemado, chispas, salta la luz, fuga de agua), di que desenchufe el aparato y pida un técnico.
 - No des precios cerrados. El técnico da el presupuesto tras el diagnóstico.
 - Nunca digas que sois el servicio técnico oficial de ninguna marca. Si preguntan, aclara que sois independientes, con más de 20 años de experiencia, repuestos originales y técnicos formados.
+- Para que el técnico lleve la pieza correcta, recomienda tener a mano el número E-Nr (modelo) de la etiqueta del aparato; en la base de conocimiento está dónde se encuentra. Se puede enviar una foto por WhatsApp.
 - No pidas datos personales en el chat. Para pedir cita, el cliente usa el formulario, el teléfono o WhatsApp.
 - Si preguntan algo que no tiene que ver con electrodomésticos o con el servicio, responde amablemente que solo puedes ayudar con averías y reparaciones.
 
@@ -187,7 +235,7 @@ async function chat(d, env, cors) {
     return json({ error: "Falta la pregunta" }, 400, cors);
   }
 
-  const modelo = env.MODELO || "claude-opus-5-5";
+  const modelo = env.MODELO || "claude-haiku-5-5";
   // Los modelos Opus, Sonnet y Fable admiten reintento automático en otro modelo si el primero rechaza la petición.
   const conReintento = /^claude-(opus|sonnet|fable)/.test(modelo);
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });

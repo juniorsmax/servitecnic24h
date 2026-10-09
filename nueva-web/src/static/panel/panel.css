@@ -1,0 +1,28 @@
+/* Panel privado del mapa */
+body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #1b2633; background: #f5f7fa; font-size: 15px; }
+.panel { display: grid; grid-template-columns: 1fr; min-height: 100vh; }
+@media (min-width: 960px) { .panel { grid-template-columns: 360px 1fr; } }
+.panel__lateral { background: #fff; border-right: 1px solid #dbe2ea; padding: 16px; overflow-y: auto; max-height: 100vh; box-sizing: border-box; }
+.panel__lateral h1 { font-size: 1.25rem; color: #0f2a44; margin: 0 0 4px; }
+.panel__lateral h2 { font-size: 1rem; color: #0f2a44; margin: 20px 0 8px; }
+.panel__lateral p { margin: 0 0 8px; color: #5a6878; }
+.panel__lateral label { display: grid; gap: 4px; font-weight: 600; margin-bottom: 8px; }
+.panel__lateral input, .panel__lateral select { font: inherit; padding: 8px 10px; border: 2px solid #dbe2ea; border-radius: 8px; }
+.panel__lateral .casilla { display: flex; align-items: center; gap: 8px; font-weight: 400; }
+.fila { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: inherit; font-weight: 600; background: #0f2a44; color: #fff; border: 0; border-radius: 99px; padding: 8px 14px; cursor: pointer; }
+button.secundario { background: #fff; color: #0f2a44; box-shadow: inset 0 0 0 2px #dbe2ea; }
+#mapa { height: 70vh; }
+@media (min-width: 960px) { #mapa { height: 100vh; } }
+.estado { background: #e6f4ee; color: #08704d; padding: 8px 10px; border-radius: 8px; font-size: .9rem; }
+.estado--error { background: #fdecea; color: #b42318; }
+.leyenda { background: #fff; padding: 10px 12px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-size: .85rem; }
+.leyenda p { margin: 4px 0 0; }
+.leyenda__fila { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.leyenda__fila span { width: 18px; height: 12px; border-radius: 3px; display: inline-block; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #eef2f6; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #f5f7fa; }
+.popup__sel { margin-top: 6px; color: #08704d; font-weight: 600; }
+[hidden] { display: none !important; }

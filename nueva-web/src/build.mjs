@@ -11,6 +11,7 @@ const cfg = leer("config/sitio.json");
 const marcas = leer("contenido/marcas.json");
 const aparatos = leer("contenido/aparatos.json");
 const codigos = leer("contenido/codigos-error.json");
+const zonas = leer("contenido/zonas.json");
 const faq = leer("contenido/faq.json").map((f) => ({ ...f, r: f.r.replace("{garantia}", cfg.garantiaMeses) }));
 
 const DIST = path.join(raiz, "dist");
@@ -48,6 +49,8 @@ const ICONOS = {
   lavavajillas: '<rect x="5" y="3" width="22" height="26" rx="3"/><path d="M5 9h22M9 6h3M10 15v9M14 15v9M18 15v9M22 15v9"/>',
   termo: '<rect x="9" y="3" width="14" height="24" rx="7"/><path d="M13 27v3M19 27v3M16 9v8"/><circle cx="16" cy="19" r="2.5"/>',
   horno: '<rect x="4" y="4" width="24" height="24" rx="3"/><rect x="8" y="12" width="16" height="12" rx="1.5"/><path d="M9 8h2M14 8h2M19 8h4"/>',
+  frigorifico: '<rect x="7" y="3" width="18" height="26" rx="3"/><path d="M7 12h18M11 7v2M11 16v4"/>',
+  campana: '<path d="M13 3h6v8h-6z"/><path d="M13 11L4 22h24L19 11"/><path d="M4 22v3h24v-3M10 25v2M22 25v2"/>',
   placa: '<rect x="3" y="7" width="26" height="18" rx="3"/><circle cx="11" cy="16" r="4.5"/><circle cx="22" cy="13" r="3"/><circle cx="22" cy="21" r="2"/>',
   tel: '<path d="M6 4h5l2 6-3 2a16 16 0 0 0 10 10l2-3 6 2v5a2 2 0 0 1-2 2A24 24 0 0 1 4 6a2 2 0 0 1 2-2z"/>',
   wa: '<path d="M16 3a13 13 0 0 0-11 19.6L3.5 29l6.6-1.6A13 13 0 1 0 16 3z"/><path d="M11.5 10.5c.5 3.5 4.5 8 9 9l1.5-2-2.5-1.5-1.5 1c-1.5-.5-3-2-3.5-3.5l1-1.5-1.5-2.5z"/>',
@@ -209,7 +212,7 @@ const ventajas = () => `
   <li>${icono("mapa")}<div><strong>A domicilio</strong><span>${esc(cfg.ciudad)} y área metropolitana</span></div></li>
 </ul>`;
 
-// Formulario por pasos. Sin JavaScript se ve completo y sigue funcionando.
+// Formulario rápido de una sola pantalla. Funciona también sin JavaScript (valida el navegador).
 function formulario({ marca = "", aparato = "" } = {}) {
   const opcionesAparato = aparatos
     .map((a) => `<option value="${a.slug}"${a.slug === aparato ? " selected" : ""}>${esc(a.nombre)}</option>`)
@@ -217,65 +220,48 @@ function formulario({ marca = "", aparato = "" } = {}) {
   const opcionesMarca = marcas
     .map((m) => `<option value="${m.slug}"${m.slug === marca ? " selected" : ""}>${m.nombre}</option>`)
     .join("");
-  const ap = aparatos.find((a) => a.slug === aparato);
-  const opcionesAveria = (ap ? ap.averias : [])
-    .map((v) => `<option>${esc(v.titulo)}</option>`)
-    .join("");
   return `
 <section id="solicitud" class="solicitud">
   <form class="formulario" data-formulario novalidate>
     <div class="formulario__cabecera">
       <h2>Pide tu técnico</h2>
-      <p>Te llamamos para confirmar el día y la hora. Sin compromiso.</p>
-      <div class="progreso" aria-hidden="true"><span class="progreso__barra"></span></div>
-      <p class="progreso__texto" aria-live="polite"></p>
+      <p>Rellénalo en un minuto. Te llamamos para confirmar la visita.</p>
     </div>
-
-    <fieldset class="paso" data-paso="1">
-      <legend>¿Qué necesitas reparar?</legend>
-      <label>Electrodoméstico
-        <select name="aparato" required><option value="">Elige uno</option>${opcionesAparato}</select>
-      </label>
-      <label>Marca
-        <select name="marca" required><option value="">Elige la marca</option>${opcionesMarca}</select>
-      </label>
-    </fieldset>
-
-    <fieldset class="paso" data-paso="2">
-      <legend>¿Qué le pasa?</legend>
-      <label>Avería
-        <select name="averia" data-averias required><option value="">Elige la avería</option>${opcionesAveria}<option>Otra avería</option></select>
-      </label>
-      <label>Cuéntanos más (opcional)
-        <textarea name="detalle" rows="3" maxlength="600" placeholder="Por ejemplo: código de error, modelo, desde cuándo pasa…"></textarea>
-      </label>
-    </fieldset>
-
-    <fieldset class="paso" data-paso="3">
-      <legend>¿Dónde y cómo te contactamos?</legend>
-      <label>Código postal
-        <input name="cp" inputmode="numeric" autocomplete="postal-code" pattern="0[0-9]{4}" maxlength="5" required placeholder="08001">
-      </label>
-      <label>Nombre
+    <div class="formulario__campos">
+      <div class="fila-2">
+        <label>Electrodoméstico
+          <select name="aparato" required><option value="">Elige</option>${opcionesAparato}</select>
+        </label>
+        <label>Marca
+          <select name="marca" required><option value="">Elige</option>${opcionesMarca}</select>
+        </label>
+      </div>
+      <label>Nombre y apellidos
         <input name="nombre" autocomplete="name" maxlength="80" required>
       </label>
       <label>Teléfono
         <input name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="(\\+34)?[6789][0-9]{8}" maxlength="13" required placeholder="600 000 000">
       </label>
+      <div class="fila-dir">
+        <label>Dirección
+          <input name="direccion" autocomplete="street-address" maxlength="120" required placeholder="Calle, número, piso y puerta">
+        </label>
+        <label>Código postal
+          <input name="cp" inputmode="numeric" autocomplete="postal-code" pattern="0[0-9]{4}" maxlength="5" required placeholder="08001">
+        </label>
+      </div>
+      <label><span>¿Qué le pasa? <span class="opcional">(opcional)</span></span>
+        <input name="averia" maxlength="200" placeholder="Ej.: no centrifuga, error E18…">
+      </label>
       <label class="casilla">
         <input type="checkbox" name="consentimiento" value="si" required>
-        <span>He leído la <a href="/privacidad/" target="_blank">política de privacidad</a> y acepto que me llaméis para gestionar la reparación.</span>
+        <span>Acepto la <a href="/privacidad/" target="_blank">política de privacidad</a> y que me llaméis o escribáis por WhatsApp para la reparación.</span>
       </label>
       <div class="oculto" aria-hidden="true"><label>No rellenar <input name="web" tabindex="-1" autocomplete="off"></label></div>
       <div class="turnstile" data-turnstile></div>
-    </fieldset>
-
-    <p class="formulario__error" role="alert" hidden></p>
-    <div class="formulario__botones">
-      <button type="button" class="boton boton--secundario" data-anterior>Anterior</button>
-      <button type="button" class="boton" data-siguiente>Siguiente</button>
-      <button type="submit" class="boton boton--llamar" data-enviar>Enviar solicitud</button>
     </div>
+    <p class="formulario__error" role="alert" hidden></p>
+    <button type="submit" class="boton boton--llamar boton--grande formulario__enviar" data-enviar>Pedir técnico</button>
     <p class="formulario__alternativa">¿Prefieres hablar ya? <a href="${telHref}" data-evento="llamada">Llama al ${esc(cfg.telefonoVisible)}</a></p>
   </form>
 </section>`;
@@ -295,7 +281,7 @@ function inicio() {
     ruta: "/",
     prioridad: "1.0",
     titulo: `Servicio técnico Bosch, Siemens y Balay en ${cfg.ciudad} | Reparación a domicilio`,
-    descripcion: `Reparación de lavadoras, lavavajillas, termos, hornos y placas Bosch, Siemens y Balay en ${cfg.ciudad}. ${cfg.experiencia} de experiencia, repuestos originales y garantía por escrito.`,
+    descripcion: `Reparación de lavadoras, lavavajillas, frigoríficos, termos, hornos, campanas y placas Bosch, Siemens y Balay en ${cfg.ciudad}. ${cfg.experiencia} de experiencia, repuestos originales y garantía por escrito.`,
     schema: [negocioSchema, faqSchema(faq)],
     cuerpo: `
 <section class="portada">
@@ -303,7 +289,7 @@ function inicio() {
     <div>
       <p class="etiqueta">Bosch · Siemens · Balay</p>
       <h1>Reparamos tu electrodoméstico en ${esc(cfg.ciudad)}</h1>
-      <p class="portada__texto">Lavadoras, lavavajillas, termos eléctricos, hornos y placas. Técnicos formados con ${esc(cfg.experiencia)} de experiencia en estas tres marcas y repuestos originales.</p>
+      <p class="portada__texto">Lavadoras, lavavajillas, frigoríficos, termos eléctricos, hornos, campanas y placas. Técnicos formados con ${esc(cfg.experiencia)} de experiencia en estas tres marcas y repuestos originales.</p>
       <div class="portada__botones">
         <a class="boton boton--llamar boton--grande" href="${telHref}" data-evento="llamada">${icono("tel")}Llamar ahora</a>
         <a class="boton boton--secundario boton--grande" href="#solicitud">Pedir cita online</a>
@@ -337,7 +323,7 @@ function paginaMarca(m) {
     ruta: `/${m.slug}/`,
     prioridad: "0.9",
     titulo: `Servicio técnico ${m.nombre} en ${cfg.ciudad} | Reparación a domicilio`,
-    descripcion: `Reparación de electrodomésticos ${m.nombre} en ${cfg.ciudad}: lavadoras, lavavajillas, termos, hornos y placas. ${cfg.experiencia} de experiencia y repuestos originales.`,
+    descripcion: `Reparación de electrodomésticos ${m.nombre} en ${cfg.ciudad}: lavadoras, lavavajillas, frigoríficos, termos, hornos, campanas y placas. ${cfg.experiencia} de experiencia y repuestos originales.`,
     schema: [negocioSchema, migas([["Inicio", "/"], [m.nombre, `/${m.slug}/`]])],
     cuerpo: `
 ${migasHtml([["Inicio", "/"], [m.nombre, `/${m.slug}/`]])}
@@ -438,6 +424,14 @@ ${listaCodigos ? `<section class="contenedor seccion">
   ${tablaCodigos(listaCodigos.slice(0, 4))}
   <p><a href="/codigos-error/${a.slug}/">Ver todos los códigos de error de ${minus(a.nombre)}</a></p>
 </section>` : ""}
+<section class="contenedor seccion">
+  <div class="aviso-enr">
+    <h2>Ten a mano el número E-Nr</h2>
+    <p>Es el modelo exacto de ${esc(a.articulo)} ${m.nombre}. Con él, el técnico lleva la pieza correcta y la reparación es más rápida.</p>
+    <p><strong>Dónde está:</strong> ${esc(a.etiqueta)}</p>
+    <p>Puedes enviarnos una foto de la etiqueta por <a href="${waHref(`Hola, os envío la etiqueta de mi ${a.singular} ${m.nombre}`)}" data-evento="whatsapp" target="_blank" rel="noopener">WhatsApp</a> cuando te contactemos.</p>
+  </div>
+</section>
 <section class="contenedor seccion">
   <h2>Repuestos que cambiamos con más frecuencia</h2>
   <ul class="etiquetas">${a.piezas.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
@@ -638,10 +632,79 @@ function noEncontrada() {
   });
 }
 
+// Panel privado (no indexado): mapa por código postal y zona de anuncios.
+function panelMapa() {
+  const base = cfg.endpoints.solicitud ? new URL(cfg.endpoints.solicitud).origin : "";
+  const configPanel = { estadisticas: base ? `${base}/api/estadisticas` : "", zonas: { municipios: zonas.municipios, cpExtra: zonas.cpExtra, nombresCorregidos: zonas.nombresCorregidos } };
+  const html = `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mapa por código postal | Panel</title>
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/panel/leaflet/leaflet.css">
+<link rel="stylesheet" href="/panel/panel.css">
+<script type="application/json" id="config-panel">${JSON.stringify(configPanel).replace(/</g, "\\u003c")}</script>
+<script src="/panel/leaflet/leaflet.js" defer></script>
+<script src="/panel/mapa.js" defer></script>
+</head>
+<body>
+<div class="panel">
+  <aside class="panel__lateral">
+    <h1>Mapa por código postal</h1>
+    <p>Dónde llegan las solicitudes y dónde se ven tus anuncios.</p>
+    <p id="estado" class="estado" role="status">Cargando mapa…</p>
+
+    <label>Qué mostrar en colores
+      <select id="metrica">
+        <option value="solicitudes">Solicitudes de la web</option>
+        <option value="impresiones">Impresiones (Google Ads)</option>
+        <option value="clics">Clics (Google Ads)</option>
+        <option value="coste">Coste (Google Ads)</option>
+        <option value="conversiones">Conversiones (Google Ads)</option>
+      </select>
+    </label>
+    <div id="leyenda" class="leyenda"></div>
+
+    <h2>1. Solicitudes de la web</h2>
+    <p>Solo código postal, aparato y marca. Sin datos personales.</p>
+    <label>Clave del panel <input id="token" type="password" autocomplete="off"></label>
+    <label>Periodo
+      <select id="dias"><option value="30">Últimos 30 días</option><option value="90" selected>Últimos 90 días</option><option value="365">Último año</option></select>
+    </label>
+    <button type="button" id="cargar-solicitudes">Cargar solicitudes</button>
+
+    <h2>2. Informe de Google Ads</h2>
+    <p>En Google Ads: Campañas › Estadísticas › Dónde se mostraron tus anuncios › nivel "Código postal". Descarga en CSV y súbelo aquí. No se envía a ningún sitio.</p>
+    <input id="csv-ads" type="file" accept=".csv,.tsv,.txt,text/csv">
+
+    <h2>3. Zona de anuncios</h2>
+    <p>Marcada en verde: <strong id="num-seleccion">0</strong> códigos postales. Para añadir o quitar, activa esta opción y haz clic en el mapa.</p>
+    <label class="casilla"><input type="checkbox" id="modo-seleccion"> Editar zona con clic</label>
+    <div class="fila">
+      <button type="button" id="copiar">Copiar para Google Ads</button>
+      <button type="button" class="secundario" id="exportar">Descargar lista</button>
+      <button type="button" class="secundario" id="restablecer">Restablecer</button>
+    </div>
+
+    <h2>Códigos postales con más datos</h2>
+    <table id="tabla"><thead><tr><th>CP</th><th>Municipio</th><th>Sol.</th><th>Impr.</th><th>Clics</th><th>Coste</th><th>Conv.</th></tr></thead><tbody></tbody></table>
+    <p id="tabla-vacia">Aún no hay datos.</p>
+  </aside>
+  <div id="mapa" aria-label="Mapa de códigos postales"></div>
+</div>
+</body>
+</html>
+`;
+  escribir("/panel/mapa/", html, { indexar: false });
+}
+
 // Datos para el asistente de averías del navegador.
 function datosBot() {
   const datos = {
-    aparatos: aparatos.map((a) => ({ slug: a.slug, nombre: a.nombre, singular: a.singular, averias: a.averias })),
+    aparatos: aparatos.map((a) => ({ slug: a.slug, nombre: a.nombre, singular: a.singular, averias: a.averias, etiqueta: a.etiqueta })),
     marcas: marcas.map((m) => ({ slug: m.slug, nombre: m.nombre })),
     codigos,
     faq
@@ -663,7 +726,7 @@ function archivosRaiz() {
     "default-src 'self'",
     "script-src 'self' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms https://challenges.cloudflare.com",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.google.es https://googleads.g.doubleclick.net https://*.clarity.ms https://c.bing.com",
+    "img-src 'self' data: https://tile.openstreetmap.org https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.google.es https://googleads.g.doubleclick.net https://*.clarity.ms https://c.bing.com",
     `connect-src 'self' ${origenes.join(" ")} https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.google.com https://googleads.g.doubleclick.net https://*.clarity.ms`.replace(/\s+/g, " "),
     "frame-src https://challenges.cloudflare.com https://www.googletagmanager.com https://td.doubleclick.net",
     "base-uri 'self'",
@@ -673,9 +736,9 @@ function archivosRaiz() {
   ].join("; ");
   fs.writeFileSync(
     path.join(DIST, "_headers"),
-    `/*\n  Content-Security-Policy: ${csp}\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Strict-Transport-Security: max-age=31536000; includeSubDomains\n  X-Frame-Options: DENY\n\n/gracias/*\n  X-Robots-Tag: noindex\n`
+    `/*\n  Content-Security-Policy: ${csp}\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Strict-Transport-Security: max-age=31536000; includeSubDomains\n  X-Frame-Options: DENY\n\n/gracias/*\n  X-Robots-Tag: noindex\n\n/panel/*\n  X-Robots-Tag: noindex, nofollow\n`
   );
-  fs.writeFileSync(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /gracias/\n\nSitemap: ${BASE}/sitemap.xml\n`);
+  fs.writeFileSync(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /gracias/\nDisallow: /panel/\n\nSitemap: ${BASE}/sitemap.xml\n`);
 }
 
 // ---------- ejecución ----------
@@ -690,6 +753,7 @@ contacto();
 gracias();
 legales();
 noEncontrada();
+panelMapa();
 datosBot();
 archivosRaiz();
 

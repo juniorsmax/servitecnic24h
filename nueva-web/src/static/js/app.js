@@ -156,39 +156,28 @@
     return promesaDatos;
   }
 
-  // ---------- Formulario por pasos ----------
+  // ---------- Formulario rápido ----------
   $$("[data-formulario]").forEach(iniciarFormulario);
 
   function iniciarFormulario(form) {
-    var pasos = $$(".paso", form);
-    var actual = 0;
-    var bAnterior = $("[data-anterior]", form);
-    var bSiguiente = $("[data-siguiente]", form);
     var bEnviar = $("[data-enviar]", form);
     var error = $(".formulario__error", form);
-    var barra = $(".progreso__barra", form);
-    var textoProgreso = $(".progreso__texto", form);
-    var selAparato = form.elements.aparato;
-    var selAveria = form.elements.averia;
     var widgetTurnstile = null;
 
-    function mostrar(i) {
-      actual = i;
-      pasos.forEach(function (p, n) { p.classList.toggle("activo", n === i); });
-      bAnterior.hidden = i === 0;
-      bSiguiente.hidden = i === pasos.length - 1;
-      bEnviar.hidden = i !== pasos.length - 1;
-      barra.style.width = Math.round(((i + 1) / pasos.length) * 100) + "%";
-      textoProgreso.textContent = "Paso " + (i + 1) + " de " + pasos.length;
-      error.hidden = true;
-      if (i === pasos.length - 1) prepararTurnstile();
+    function mensajeError(c) {
+      if (c.name === "cp") return "Escribe un código postal válido (5 cifras, por ejemplo 08001).";
+      if (c.name === "telefono") return "Escribe un teléfono válido de 9 cifras.";
+      if (c.name === "consentimiento") return "Necesitamos tu permiso para contactarte.";
+      if (c.name === "direccion") return "Escribe tu dirección (calle, número y piso).";
+      var etiqueta = c.closest("label");
+      return "Revisa este campo: " + (etiqueta ? etiqueta.firstChild.textContent.trim() : c.name) + ".";
     }
 
-    function validarPaso(i) {
-      var campos = $$("input, select, textarea", pasos[i]);
+    function validar() {
+      var campos = $$("input, select", form);
       for (var k = 0; k < campos.length; k++) {
         var c = campos[k];
-        if (c.name === "web") continue;
+        if (c.name === "web" || !c.name || c.name.indexOf("cf-") === 0) continue;
         if (c.name === "telefono") c.value = c.value.replace(/[\s.-]/g, "");
         var valido = c.checkValidity();
         c.setAttribute("aria-invalid", valido ? "false" : "true");
@@ -199,64 +188,39 @@
           return false;
         }
       }
+      error.hidden = true;
       return true;
     }
 
-    function mensajeError(c) {
-      if (c.name === "cp") return "Escribe un código postal válido (5 cifras, por ejemplo 08001).";
-      if (c.name === "telefono") return "Escribe un teléfono válido de 9 cifras.";
-      if (c.name === "consentimiento") return "Necesitamos tu permiso para llamarte.";
-      return "Revisa este campo: " + (c.closest("label") ? c.closest("label").firstChild.textContent.trim() : c.name) + ".";
-    }
-
-    // Las averías cambian según el electrodoméstico elegido.
-    selAparato.addEventListener("change", function () {
-      datos().then(function (d) {
-        var ap = d.aparatos.filter(function (a) { return a.slug === selAparato.value; })[0];
-        selAveria.innerHTML = "";
-        selAveria.appendChild(el("option", { value: "" }, "Elige la avería"));
-        (ap ? ap.averias : []).forEach(function (v) { selAveria.appendChild(el("option", {}, v.titulo)); });
-        selAveria.appendChild(el("option", {}, "Otra avería"));
-      });
-    });
-
-    function prepararTurnstile() {
+    // Turnstile (anti-spam) se carga al empezar a rellenar, no antes.
+    form.addEventListener("focusin", function () {
       if (!SITIO.turnstileSiteKey || widgetTurnstile !== null) return;
       widgetTurnstile = "cargando";
-      window.alCargarTurnstile = function () {
-        $$("[data-turnstile]").forEach(function (caja) {
-          if (caja.closest("form") === form) {
-            widgetTurnstile = window.turnstile.render(caja, { sitekey: SITIO.turnstileSiteKey, language: "es" });
-          }
-        });
-      };
-      if (window.turnstile) window.alCargarTurnstile();
-      else cargarScript("https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=alCargarTurnstile");
-    }
-
-    bSiguiente.addEventListener("click", function () { if (validarPaso(actual)) mostrar(actual + 1); });
-    bAnterior.addEventListener("click", function () { mostrar(actual - 1); });
+      var caja = $("[data-turnstile]", form);
+      var pintar = function () { widgetTurnstile = window.turnstile.render(caja, { sitekey: SITIO.turnstileSiteKey, language: "es" }); };
+      if (window.turnstile) return pintar();
+      var anterior = window.alCargarTurnstile;
+      window.alCargarTurnstile = function () { if (anterior) anterior(); pintar(); };
+      cargarScript("https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=alCargarTurnstile");
+    });
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      for (var i = 0; i < pasos.length; i++) {
-        if (!validarPaso(i)) { mostrar(i); validarPaso(i); return; }
-      }
+      if (!validar()) return;
       if (form.elements.web.value) return; // trampa para robots
       var f = form.elements;
       var envio = {
         aparato: f.aparato.value,
         marca: f.marca.value,
-        averia: f.averia.value,
-        detalle: f.detalle.value.trim(),
-        cp: f.cp.value.trim(),
         nombre: f.nombre.value.trim(),
         telefono: f.telefono.value.trim(),
+        direccion: f.direccion.value.trim(),
+        cp: f.cp.value.trim(),
+        averia: f.averia.value.trim(),
         consentimiento: f.consentimiento.checked,
         pagina: location.pathname,
         origen: cargar("origen_visita", true) || {},
-        turnstile: window.turnstile && typeof widgetTurnstile === "string" && widgetTurnstile !== "cargando"
-          ? window.turnstile.getResponse(widgetTurnstile) : ""
+        turnstile: window.turnstile && widgetTurnstile && widgetTurnstile !== "cargando" ? window.turnstile.getResponse(widgetTurnstile) : ""
       };
       bEnviar.disabled = true;
       bEnviar.textContent = "Enviando…";
@@ -272,14 +236,12 @@
         location.href = "/gracias/" + (envio.marca ? envio.marca + "/" : "");
       }).catch(function () {
         bEnviar.disabled = false;
-        bEnviar.textContent = "Enviar solicitud";
+        bEnviar.textContent = "Pedir técnico";
         error.textContent = "No se ha podido enviar. Inténtalo de nuevo o llámanos.";
         error.hidden = false;
         if (window.turnstile && widgetTurnstile && widgetTurnstile !== "cargando") window.turnstile.reset(widgetTurnstile);
       });
     });
-
-    mostrar(0);
   }
 
   // ---------- Página de gracias: resumen y conversión ----------
@@ -414,6 +376,7 @@
   function cierre() {
     var a = estado.aparato, m = estado.marca;
     decir("Lo más seguro es que lo revise un técnico. Te llamamos para fijar la visita.");
+    if (a && a.etiqueta) decir("Consejo: ten a mano el número E-Nr (el modelo). " + a.etiqueta + " Así el técnico lleva la pieza correcta.");
     var destino = a && m ? "/" + m.slug + "/" + a.slug + "/#solicitud" : "#solicitud";
     var acciones = [{ texto: "Pedir técnico", href: destino, evento: "bot-formulario" }];
     if (SITIO.telefono) acciones.push({ texto: "Llamar", href: "tel:" + SITIO.telefono.replace(/\s/g, ""), evento: "llamada" });
