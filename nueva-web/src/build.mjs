@@ -134,8 +134,12 @@ function pie() {
   </div>
   <p class="contenedor pie__aviso">Bosch, Siemens y Balay son marcas registradas de sus respectivos titulares. ${esc(cfg.nombre)} es un servicio técnico independiente y no es el servicio técnico oficial de ninguna de estas marcas.</p>
 </footer>
+<a class="cta-flotante" href="${telHref}" data-evento="llamada" data-cta-flotante>
+  <span class="cta-flotante__icono">${icono("tel")}</span>
+  <span class="cta-flotante__texto"><strong>Llama ahora</strong><span>Técnico en 24-48 h · ${esc(cfg.telefonoVisible)}</span></span>
+</a>
 <div class="barra-movil" role="navigation" aria-label="Contacto rápido">
-  <a href="${telHref}" data-evento="llamada">${icono("tel")}Llamar</a>
+  <a class="barra-movil__llamar" href="${telHref}" data-evento="llamada">${icono("tel")}Llamar ahora</a>
   <a href="${waHref("Hola, necesito reparar un electrodoméstico")}" data-evento="whatsapp" target="_blank" rel="noopener">${icono("wa")}WhatsApp</a>
   <a href="#solicitud" data-evento="ir-formulario">${icono("check")}Pedir cita</a>
 </div>`;

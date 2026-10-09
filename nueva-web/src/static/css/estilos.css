@@ -375,3 +375,32 @@ p { margin: 0 0 1em; }
   .bot-boton { padding: 12px; width: 52px; height: 52px; justify-content: center; }
   .bot-boton__texto { display: none; }
 }
+
+/* Botón flotante de llamada (ordenador y tablet) */
+.cta-flotante { position: fixed; right: 24px; bottom: 24px; z-index: 46; display: none; align-items: center; gap: 12px; padding: 10px 22px 10px 10px; border-radius: 99px; background: var(--verde); color: var(--blanco); text-decoration: none; box-shadow: 0 14px 34px rgba(11, 138, 95, .35); transition: opacity .3s, transform .3s; }
+.cta-flotante:hover { background: var(--verde-oscuro); }
+.cta-flotante__icono { position: relative; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: rgba(255, 255, 255, .18); }
+.cta-flotante__icono::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255, 255, 255, .7); animation: pulso 1.8s ease-out infinite; }
+.cta-flotante__texto { display: grid; line-height: 1.2; }
+.cta-flotante__texto strong { font-size: 1.05rem; }
+.cta-flotante__texto span { font-size: .8rem; opacity: .9; }
+.js .cta-flotante:not(.visible) { opacity: 0; transform: translateY(24px); pointer-events: none; }
+@media (min-width: 900px) {
+  .cta-flotante { display: flex; }
+  .con-cta .bot-boton { bottom: 100px; }
+}
+@keyframes pulso {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, .7); }
+  70% { box-shadow: 0 0 0 14px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* Barra de móvil: "Llamar ahora" destacado con pulso */
+.barra-movil { grid-template-columns: 1.4fr 1fr 1fr; }
+.barra-movil__llamar { position: relative; flex-direction: row !important; justify-content: center; gap: 8px !important; font-size: .95rem !important; }
+.barra-movil__llamar .ico { animation: timbre 2.4s ease-in-out infinite; }
+@keyframes timbre {
+  0%, 60%, 100% { transform: rotate(0); }
+  65% { transform: rotate(-14deg); } 70% { transform: rotate(12deg); } 75% { transform: rotate(-10deg); } 80% { transform: rotate(8deg); } 85% { transform: rotate(0); }
+}
+.bot-boton { transition: bottom .3s; }

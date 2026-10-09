@@ -152,6 +152,18 @@
     if (e.target.closest("[data-abrir-cookies]")) mostrarBanner();
   });
 
+  // Botón flotante de llamada: aparece al pasar la primera pantalla y acompaña el desplazamiento.
+  (function () {
+    var cta = $("[data-cta-flotante]");
+    var inicio = $(".heroe") || $(".cabeza") || $("main");
+    if (!cta || !inicio || !("IntersectionObserver" in window)) { if (cta) cta.classList.add("visible"); return; }
+    new IntersectionObserver(function (entradas) {
+      var fuera = !entradas[0].isIntersecting;
+      cta.classList.toggle("visible", fuera);
+      document.body.classList.toggle("con-cta", fuera);
+    }, { rootMargin: "-120px 0px 0px 0px" }).observe(inicio);
+  })();
+
   // Eventos de contacto (llamadas, WhatsApp) para la analítica.
   document.addEventListener("click", function (e) {
     var a = e.target.closest("[data-evento]");

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node src/build.mjs",
     "ver": "node src/build.mjs && npx --yes serve@14.2.4 dist -l 4321",
-    "vista": "node src/build.mjs && node src/vista-previa.mjs"
+    "vista": "node src/build.mjs && node src/vista-previa.mjs",
+    "github": "node src/build.mjs && node src/vista-previa.mjs --github"
   }
 }

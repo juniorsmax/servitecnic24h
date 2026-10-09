@@ -1,13 +1,15 @@
-// Prepara una copia de la web con enlaces relativos para verla sin dominio (vista previa).
-// Uso: node src/build.mjs && node src/vista-previa.mjs  ->  carpeta vista-previa/
+// Prepara una copia de la web con enlaces relativos para verla sin dominio.
+// Uso: node src/vista-previa.mjs           -> vista-previa/ (vista previa en Claude)
+//      node src/vista-previa.mjs --github  -> publicar-github/ (URL provisional en GitHub Pages, sin indexar)
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(raiz, "dist");
-const SALIDA = path.join(raiz, "vista-previa");
-const WEB = path.join(SALIDA, "web");
+const GITHUB = process.argv.includes("--github");
+const SALIDA = path.join(raiz, GITHUB ? "publicar-github" : "vista-previa");
+const WEB = GITHUB ? SALIDA : path.join(SALIDA, "web");
 const EXCLUIR = new Set(["panel", "_headers", "robots.txt", "sitemap.xml"]);
 
 fs.rmSync(SALIDA, { recursive: true, force: true });
@@ -38,6 +40,8 @@ function recorrer(dir) {
       html = html.replace(/(<script type="application\/json" id="config-sitio">)\{/, `$1{"raiz":"${raizRel}",`);
       // En la vista previa no se carga la fuente con preload (se carga desde el CSS).
       html = html.replace(/<link rel="preload"[^>]*>\n?/, "");
+      // La URL provisional no debe salir en Google.
+      if (GITHUB) html = html.replace(/<meta name="robots" content="[^"]*">/, '<meta name="robots" content="noindex, nofollow">');
       fs.writeFileSync(f, html);
     }
   }
@@ -48,7 +52,12 @@ recorrer(WEB);
 const css = path.join(WEB, "css", "estilos.css");
 fs.writeFileSync(css, fs.readFileSync(css, "utf8").replace(/url\("\/fuentes\//g, 'url("../fuentes/'));
 
-fs.copyFileSync(path.join(raiz, "src", "vista-previa.html"), path.join(SALIDA, "indice.html"));
+if (GITHUB) {
+  fs.writeFileSync(path.join(SALIDA, "robots.txt"), "User-agent: *\nDisallow: /\n");
+  fs.writeFileSync(path.join(SALIDA, ".nojekyll"), "");
+} else {
+  fs.copyFileSync(path.join(raiz, "src", "vista-previa.html"), path.join(SALIDA, "indice.html"));
+}
 
 const archivos = [];
 (function listar(dir) {
@@ -57,4 +66,4 @@ const archivos = [];
     e.isDirectory() ? listar(f) : archivos.push(path.relative(SALIDA, f));
   }
 })(WEB);
-console.log(`Vista previa en vista-previa/: ${archivos.length} archivos.`);
+console.log(`Copia con enlaces relativos en ${path.basename(SALIDA)}/: ${archivos.length} archivos.`);
