@@ -1,0 +1,88 @@
+<title>Vista previa Técnico BCN</title>
+<style>
+  /* Índice de la vista previa: una columna de accesos agrupados por marca. */
+  :root {
+    --fondo: #f4f6f9;
+    --superficie: #ffffff;
+    --texto: #18212b;
+    --suave: #5b6876;
+    --borde: #dde3ea;
+    --general: #17406b;
+    --bosch: #c41a25;
+    --siemens: #076a6e;
+    --balay: #1d63b8;
+    --letra: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --fondo: #10161d; --superficie: #19212b; --texto: #e8edf2; --suave: #9aa8b6; --borde: #2a3542; --general: #6ea3d8; --bosch: #f0646c; --siemens: #39b9bd; --balay: #6aa2e6; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --fondo: #10161d; --superficie: #19212b; --texto: #e8edf2; --suave: #9aa8b6; --borde: #2a3542; --general: #6ea3d8; --bosch: #f0646c; --siemens: #39b9bd; --balay: #6aa2e6; color-scheme: dark; }
+  body { background: var(--fondo); color: var(--texto); font-family: var(--letra); font-size: 16px; line-height: 1.55; }
+  .envoltura { max-width: 980px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 48px; }
+  h1 { font-size: clamp(1.7rem, 3vw + 1rem, 2.4rem); line-height: 1.15; margin: 0 0 8px; text-wrap: balance; }
+  .intro { color: var(--suave); max-width: 62ch; margin: 0 0 28px; }
+  .grupos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .grupo { background: var(--superficie); border: 1px solid var(--borde); border-radius: 16px; padding: 18px 18px 14px; border-top: 5px solid var(--color); min-width: 0; }
+  .grupo h2 { font-size: 1.15rem; margin: 0 0 4px; color: var(--color); }
+  .grupo p { margin: 0 0 10px; color: var(--suave); font-size: .9rem; }
+  .grupo ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .grupo a { display: block; padding: 8px 10px; border-radius: 9px; color: var(--texto); text-decoration: none; font-weight: 600; }
+  .grupo a:hover, .grupo a:focus-visible { background: var(--fondo); outline: none; }
+  .grupo a:focus-visible { box-shadow: 0 0 0 2px var(--color); }
+  .nota { margin-top: 28px; font-size: .88rem; color: var(--suave); max-width: 70ch; }
+</style>
+
+<div class="envoltura">
+  <h1>Vista previa de la web</h1>
+  <p class="intro">Toca cualquier página para verla tal como quedará. Cada marca tiene su color y su tipografía. Los datos pendientes (teléfono, dominio, correo) salen como "PENDIENTE" o "93 XXX XX XX".</p>
+
+  <div class="grupos">
+    <section class="grupo" style="--color: var(--general)">
+      <h2>General</h2>
+      <p>Inicio y páginas comunes</p>
+      <ul>
+        <li><a href="web/index.html">Inicio</a></li>
+        <li><a href="web/lavadoras/index.html">Lavadoras (elige marca)</a></li>
+        <li><a href="web/codigos-error/index.html">Códigos de error</a></li>
+        <li><a href="web/contacto/index.html">Contacto</a></li>
+        <li><a href="web/gracias/index.html">Página de gracias</a></li>
+        <li><a href="web/cookies/index.html">Política de cookies</a></li>
+      </ul>
+    </section>
+    <section class="grupo" style="--color: var(--bosch)">
+      <h2>Bosch</h2>
+      <p>Tema rojo</p>
+      <ul>
+        <li><a href="web/bosch/index.html">Servicio técnico Bosch</a></li>
+        <li><a href="web/bosch/lavadoras/index.html">Lavadoras Bosch</a></li>
+        <li><a href="web/bosch/lavavajillas/index.html">Lavavajillas Bosch</a></li>
+        <li><a href="web/bosch/frigorificos/index.html">Frigoríficos Bosch</a></li>
+        <li><a href="web/bosch/hornos/index.html">Hornos Bosch</a></li>
+      </ul>
+    </section>
+    <section class="grupo" style="--color: var(--siemens)">
+      <h2>Siemens</h2>
+      <p>Tema petróleo</p>
+      <ul>
+        <li><a href="web/siemens/index.html">Servicio técnico Siemens</a></li>
+        <li><a href="web/siemens/lavadoras/index.html">Lavadoras Siemens</a></li>
+        <li><a href="web/siemens/lavavajillas/index.html">Lavavajillas Siemens</a></li>
+        <li><a href="web/siemens/campanas/index.html">Campanas Siemens</a></li>
+        <li><a href="web/siemens/placas-induccion-vitroceramica/index.html">Placas Siemens</a></li>
+      </ul>
+    </section>
+    <section class="grupo" style="--color: var(--balay)">
+      <h2>Balay</h2>
+      <p>Tema azul</p>
+      <ul>
+        <li><a href="web/balay/index.html">Servicio técnico Balay</a></li>
+        <li><a href="web/balay/lavadoras/index.html">Lavadoras Balay</a></li>
+        <li><a href="web/balay/termos-electricos/index.html">Termos Balay</a></li>
+        <li><a href="web/balay/hornos/index.html">Hornos Balay</a></li>
+        <li><a href="web/balay/placas-induccion-vitroceramica/index.html">Placas Balay</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <p class="nota">Desde cualquier página puedes navegar por el menú, el selector de marca y las tarjetas. El formulario funciona en modo prueba: no envía nada, solo muestra la página de gracias. El asistente de averías funciona sin IA.</p>
+</div>

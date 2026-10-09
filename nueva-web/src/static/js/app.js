@@ -8,6 +8,15 @@
   var A = SITIO.analitica || {};
   var EP = SITIO.endpoints || {};
 
+  // Rutas internas. En la vista previa (SITIO.raiz) las rutas son relativas y apuntan a index.html.
+  function ruta(p) {
+    if (!SITIO.raiz) return p;
+    var partes = p.split("#");
+    var r = SITIO.raiz + partes[0].replace(/^\//, "");
+    if (/\/$/.test(r) || r === SITIO.raiz) r += "index.html";
+    return r + (partes[1] ? "#" + partes[1] : "");
+  }
+
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
   function guardar(clave, valor, sesion) {
@@ -152,7 +161,7 @@
   // ---------- Datos compartidos (averías, códigos, FAQ) ----------
   var promesaDatos = null;
   function datos() {
-    if (!promesaDatos) promesaDatos = fetch("/datos/bot.json").then(function (r) { return r.json(); });
+    if (!promesaDatos) promesaDatos = fetch(ruta("/datos/bot.json")).then(function (r) { return r.json(); });
     return promesaDatos;
   }
 
@@ -233,7 +242,7 @@
       peticion.then(function () {
         guardar("ultima_solicitud", { aparato: envio.aparato, marca: envio.marca, averia: envio.averia, prueba: !EP.solicitud }, true);
         window.dataLayer.push({ event: "solicitud_enviada", marca: envio.marca, aparato: envio.aparato });
-        location.href = "/gracias/" + (envio.marca ? envio.marca + "/" : "");
+        location.href = ruta("/gracias/" + (envio.marca ? envio.marca + "/" : ""));
       }).catch(function () {
         bEnviar.disabled = false;
         bEnviar.textContent = "Pedir técnico";
@@ -378,7 +387,7 @@
     var a = estado.aparato, m = estado.marca;
     decir("Lo más seguro es que lo revise un técnico. Te llamamos para fijar la visita.");
     if (a && a.etiqueta) decir("Consejo: ten a mano el número E-Nr (el modelo). " + a.etiqueta + " Así el técnico lleva la pieza correcta.");
-    var destino = a && m ? "/" + m.slug + "/" + a.slug + "/#solicitud" : "#solicitud";
+    var destino = a && m ? ruta("/" + m.slug + "/" + a.slug + "/#solicitud") : "#solicitud";
     var acciones = [{ texto: "Pedir técnico", href: destino, evento: "bot-formulario" }];
     if (SITIO.telefono) acciones.push({ texto: "Llamar", href: "tel:" + SITIO.telefono.replace(/\s/g, ""), evento: "llamada" });
     if (SITIO.whatsapp) {
