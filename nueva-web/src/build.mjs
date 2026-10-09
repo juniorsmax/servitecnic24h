@@ -61,12 +61,27 @@ const ICONOS = {
   reloj: '<circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/>',
   mapa: '<path d="M16 29s-9-8.5-9-15a9 9 0 0 1 18 0c0 6.5-9 15-9 15z"/><circle cx="16" cy="14" r="3.5"/>'
 };
+// Ilustraciones grandes de cada electrodoméstico. Los colores salen del CSS (tema de cada marca).
+const ILUSTRACIONES = {
+  lavadora: '<rect class="il-cuerpo" x="22" y="10" width="76" height="100" rx="8"/><rect class="il-panel" x="22" y="10" width="76" height="20" rx="8"/><rect class="il-pantalla" x="34" y="16" width="26" height="8" rx="2"/><circle class="il-acento" cx="84" cy="20" r="5"/><circle class="il-marco" cx="60" cy="68" r="28"/><circle class="il-cristal" cx="60" cy="68" r="21"/><path class="il-brillo" d="M47 60a16 16 0 0 1 14-10"/><rect class="il-pie" x="28" y="108" width="10" height="4" rx="1"/><rect class="il-pie" x="82" y="108" width="10" height="4" rx="1"/>',
+  lavavajillas: '<rect class="il-cuerpo" x="22" y="10" width="76" height="100" rx="8"/><rect class="il-panel" x="22" y="10" width="76" height="18" rx="8"/><rect class="il-acento" x="76" y="16" width="14" height="6" rx="3"/><rect class="il-pantalla" x="32" y="16" width="20" height="6" rx="2"/><rect class="il-tirador" x="44" y="36" width="32" height="5" rx="2.5"/><path class="il-linea" d="M30 52h60M30 66h60M30 80h60M30 94h60"/>',
+  frigorifico: '<rect class="il-cuerpo" x="30" y="4" width="60" height="112" rx="8"/><path class="il-linea" d="M30 44h60"/><rect class="il-acento" x="36" y="14" width="5" height="22" rx="2.5"/><rect class="il-acento" x="36" y="52" width="5" height="34" rx="2.5"/><rect class="il-pantalla" x="62" y="16" width="20" height="10" rx="2"/>',
+  termo: '<rect class="il-cuerpo" x="36" y="6" width="48" height="96" rx="24"/><circle class="il-marco" cx="60" cy="60" r="12"/><path class="il-acento-trazo" d="M60 60l6-6"/><rect class="il-pantalla" x="50" y="26" width="20" height="8" rx="2"/><path class="il-tubo" d="M50 102v12M70 102v12"/>',
+  horno: '<rect class="il-cuerpo" x="14" y="14" width="92" height="92" rx="8"/><rect class="il-panel" x="14" y="14" width="92" height="20" rx="8"/><circle class="il-mando" cx="30" cy="24" r="5"/><circle class="il-mando" cx="90" cy="24" r="5"/><rect class="il-pantalla" x="48" y="19" width="24" height="10" rx="2"/><rect class="il-tirador" x="30" y="42" width="60" height="5" rx="2.5"/><rect class="il-cristal" x="26" y="54" width="68" height="42" rx="5"/><path class="il-acento-trazo" d="M38 88q6-8 12 0t12 0 12 0"/>',
+  campana: '<rect class="il-cuerpo" x="48" y="4" width="24" height="44" rx="3"/><path class="il-cuerpo" d="M44 48h32l30 34H14z"/><rect class="il-panel" x="12" y="82" width="96" height="12" rx="4"/><rect class="il-acento" x="30" y="86" width="16" height="4" rx="2"/><rect class="il-acento" x="74" y="86" width="16" height="4" rx="2"/><path class="il-linea" d="M30 104c4-6 8 6 12 0M54 108c4-6 8 6 12 0M78 104c4-6 8 6 12 0"/>',
+  placa: '<rect class="il-vitro" x="8" y="22" width="104" height="76" rx="10"/><circle class="il-zona" cx="38" cy="48" r="16"/><circle class="il-zona il-zona--activa" cx="82" cy="46" r="12"/><circle class="il-zona" cx="36" cy="80" r="10"/><circle class="il-zona" cx="82" cy="78" r="14"/><rect class="il-pantalla" x="46" y="88" width="28" height="5" rx="2.5"/>'
+};
+const ilustracion = (n) => `<svg class="ilustracion" viewBox="0 0 120 120" aria-hidden="true">${ILUSTRACIONES[n]}</svg>`;
+
 const icono = (n, clase = "ico") =>
   `<svg class="${clase}" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONOS[n]}</svg>`;
 
 // ---------- piezas comunes ----------
-function cabecera() {
+function cabecera(marcaActual) {
   const menuMarcas = marcas.map((m) => `<a href="/${m.slug}/">${m.nombre}</a>`).join("");
+  const selector = marcas
+    .map((m) => `<a class="selector__marca selector__marca--${m.slug}" href="/${m.slug}/"${marcaActual && marcaActual.slug === m.slug ? ' aria-current="true"' : ""}>${m.nombre}</a>`)
+    .join("");
   const menuAparatos = aparatos.map((a) => `<a href="/${a.slug}/">${a.nombre}</a>`).join("");
   return `
 <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -76,9 +91,10 @@ function cabecera() {
       <span class="logo__marca">${icono("pieza")}</span>
       <span class="logo__texto">${esc(cfg.nombre)}</span>
     </a>
+    <nav class="selector" aria-label="Marcas">${selector}</nav>
     <button class="menu-boton" aria-expanded="false" aria-controls="menu">Menú</button>
     <nav id="menu" class="menu" aria-label="Principal">
-      <details class="menu__grupo"><summary>Marcas</summary><div class="menu__lista">${menuMarcas}</div></details>
+      <details class="menu__grupo menu__grupo--marcas"><summary>Marcas</summary><div class="menu__lista">${menuMarcas}</div></details>
       <details class="menu__grupo"><summary>Electrodomésticos</summary><div class="menu__lista">${menuAparatos}</div></details>
       <a href="/codigos-error/">Códigos de error</a>
       <a href="/contacto/">Contacto</a>
@@ -134,7 +150,10 @@ const configPublica = {
   turnstileSiteKey: cfg.turnstileSiteKey
 };
 
-function pagina({ ruta, titulo, descripcion, cuerpo, schema = [], indexar = true, prioridad }) {
+const FUENTES = { Inter: "inter", "Source Sans 3": "source-sans-3", Figtree: "figtree" };
+
+function pagina({ ruta, titulo, descripcion, cuerpo, schema = [], indexar = true, prioridad, marca = null }) {
+  const fuente = FUENTES[marca ? marca.tema.fuente : "Inter"];
   const url = `${BASE}${ruta}`;
   const ld = schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n");
   const html = `<!doctype html>
@@ -152,15 +171,16 @@ function pagina({ ruta, titulo, descripcion, cuerpo, schema = [], indexar = true
 <meta property="og:url" content="${url}">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="${esc(cfg.nombre)}">
-<meta name="theme-color" content="#0f2a44">
+<meta name="theme-color" content="${marca ? marca.tema.color : "#0f2a44"}">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fuentes/${fuente}.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/estilos.css">
 ${ld}
 <script type="application/json" id="config-sitio">${JSON.stringify(configPublica).replace(/</g, "\\u003c")}</script>
 <script src="/js/app.js" defer></script>
 </head>
-<body>
-${cabecera()}
+<body data-marca="${marca ? marca.slug : "general"}">
+${cabecera(marca)}
 <main id="contenido">
 ${cuerpo}
 </main>
@@ -271,7 +291,7 @@ const tarjetasAparatos = (marca) =>
   `<div class="tarjetas">${aparatos
     .map((a) => {
       const href = marca ? `/${marca.slug}/${a.slug}/` : `/${a.slug}/`;
-      return `<a class="tarjeta" href="${href}">${icono(a.icono, "tarjeta__icono")}<span>${esc(a.nombre)}${marca ? ` ${marca.nombre}` : ""}</span></a>`;
+      return `<a class="tarjeta" href="${href}"><span class="tarjeta__imagen">${ilustracion(a.icono)}</span><span class="tarjeta__titulo">${esc(a.nombre)}${marca ? ` ${marca.nombre}` : ""}</span><span class="tarjeta__mas">Ver averías y pedir técnico →</span></a>`;
     })
     .join("")}</div>`;
 
@@ -284,34 +304,35 @@ function inicio() {
     descripcion: `Reparación de lavadoras, lavavajillas, frigoríficos, termos, hornos, campanas y placas Bosch, Siemens y Balay en ${cfg.ciudad}. ${cfg.experiencia} de experiencia, repuestos originales y garantía por escrito.`,
     schema: [negocioSchema, faqSchema(faq)],
     cuerpo: `
-<section class="portada">
-  <div class="contenedor portada__rejilla">
-    <div>
-      <p class="etiqueta">Bosch · Siemens · Balay</p>
-      <h1>Reparamos tu electrodoméstico en ${esc(cfg.ciudad)}</h1>
-      <p class="portada__texto">Lavadoras, lavavajillas, frigoríficos, termos eléctricos, hornos, campanas y placas. Técnicos formados con ${esc(cfg.experiencia)} de experiencia en estas tres marcas y repuestos originales.</p>
-      <div class="portada__botones">
+<section class="heroe heroe--general">
+  <div class="contenedor heroe__rejilla">
+    <div class="heroe__texto">
+      <p class="etiqueta">Servicio técnico a domicilio · ${esc(cfg.ciudad)}</p>
+      <h1>Reparamos tu electrodoméstico Bosch, Siemens o Balay</h1>
+      <p class="heroe__intro">Técnicos formados con ${esc(cfg.experiencia)} de experiencia en estas tres marcas, repuestos originales y garantía por escrito.</p>
+      <p class="heroe__pregunta">¿De qué marca es?</p>
+      <div class="heroe__marcas">${marcas.map((m) => `<a class="boton-marca boton-marca--${m.slug}" href="/${m.slug}/">${m.nombre}</a>`).join("")}</div>
+      <div class="heroe__botones">
         <a class="boton boton--llamar boton--grande" href="${telHref}" data-evento="llamada">${icono("tel")}Llamar ahora</a>
-        <a class="boton boton--secundario boton--grande" href="#solicitud">Pedir cita online</a>
+        <a class="boton boton--claro boton--grande" href="${waHref("Hola, necesito reparar un electrodoméstico")}" data-evento="whatsapp" target="_blank" rel="noopener">${icono("wa")}WhatsApp</a>
       </div>
-      <p class="portada__nota">Servicio técnico independiente. No somos el servicio oficial de la marca.</p>
+      <p class="heroe__nota">Servicio técnico independiente. No somos el servicio oficial de la marca.</p>
     </div>
     ${formulario()}
   </div>
 </section>
-<section class="contenedor seccion">${ventajas()}</section>
 <section class="contenedor seccion">
-  <h2>¿Qué electrodoméstico necesitas reparar?</h2>
+  <div class="seccion__cabeza"><h2>Elige tu electrodoméstico</h2><p>Toca el tuyo para ver sus averías más comunes y pedir técnico.</p></div>
   ${tarjetasAparatos()}
 </section>
+<section class="contenedor seccion">${ventajas()}</section>
 <section class="contenedor seccion">
-  <h2>Elige tu marca</h2>
+  <div class="seccion__cabeza"><h2>Tres marcas, un mismo especialista</h2><p>Bosch, Siemens y Balay pertenecen al mismo grupo fabricante (BSH) y comparten muchos repuestos. Por eso nos especializamos en las tres.</p></div>
   <div class="marcas">${marcas
-    .map((m) => `<a class="marca" href="/${m.slug}/"><strong>${m.nombre}</strong><span>${aparatos.length} tipos de electrodoméstico</span></a>`)
+    .map((m) => `<a class="marca marca--${m.slug}" href="/${m.slug}/"><strong>${m.nombre}</strong><span>${aparatos.length} tipos de electrodoméstico</span><span class="marca__ir">Ver servicio técnico ${m.nombre} →</span></a>`)
     .join("")}</div>
-  <p class="nota">Bosch, Siemens y Balay pertenecen al mismo grupo fabricante (BSH) y comparten muchos repuestos. Por eso nos especializamos en las tres.</p>
 </section>
-<section class="contenedor seccion">
+<section class="contenedor seccion seccion--estrecha">
   <h2>Preguntas frecuentes</h2>
   ${faqHtml(faq)}
 </section>`
@@ -324,20 +345,30 @@ function paginaMarca(m) {
     prioridad: "0.9",
     titulo: `Servicio técnico ${m.nombre} en ${cfg.ciudad} | Reparación a domicilio`,
     descripcion: `Reparación de electrodomésticos ${m.nombre} en ${cfg.ciudad}: lavadoras, lavavajillas, frigoríficos, termos, hornos, campanas y placas. ${cfg.experiencia} de experiencia y repuestos originales.`,
+    marca: m,
     schema: [negocioSchema, migas([["Inicio", "/"], [m.nombre, `/${m.slug}/`]])],
     cuerpo: `
-${migasHtml([["Inicio", "/"], [m.nombre, `/${m.slug}/`]])}
-<section class="contenedor cabeza">
-  <h1>Servicio técnico de electrodomésticos ${m.nombre} en ${esc(cfg.ciudad)}</h1>
-  <p class="cabeza__texto">${esc(m.intro)}</p>
-  <p class="nota">${esc(m.nota)}</p>
+<section class="heroe">
+  <div class="contenedor heroe__rejilla">
+    <div class="heroe__texto">
+      ${migasHtml([["Inicio", "/"], [m.nombre, `/${m.slug}/`]])}
+      <p class="etiqueta">Especialistas en ${m.nombre}</p>
+      <h1>Servicio técnico de electrodomésticos ${m.nombre} en ${esc(cfg.ciudad)}</h1>
+      <p class="heroe__intro">${esc(m.intro)}</p>
+      <div class="heroe__botones">
+        <a class="boton boton--llamar boton--grande" href="${telHref}" data-evento="llamada">${icono("tel")}Llamar ahora</a>
+        <a class="boton boton--claro boton--grande" href="${waHref(`Hola, necesito reparar un electrodoméstico ${m.nombre}`)}" data-evento="whatsapp" target="_blank" rel="noopener">${icono("wa")}WhatsApp</a>
+      </div>
+      <p class="heroe__nota">Servicio técnico independiente. No somos el servicio oficial de ${m.nombre}.</p>
+    </div>
+    ${formulario({ marca: m.slug })}
+  </div>
 </section>
 <section class="contenedor seccion">
-  <h2>¿Qué electrodoméstico ${m.nombre} reparamos?</h2>
+  <div class="seccion__cabeza"><h2>¿Qué electrodoméstico ${m.nombre} necesitas reparar?</h2><p>${esc(m.nota)}</p></div>
   ${tarjetasAparatos(m)}
 </section>
-<section class="contenedor seccion">${ventajas()}</section>
-<div class="contenedor">${formulario({ marca: m.slug })}</div>`
+<section class="contenedor seccion">${ventajas()}</section>`
   });
 }
 
@@ -349,18 +380,23 @@ function paginaAparato(a) {
     descripcion: `Servicio técnico de ${minus(a.nombre)} Bosch, Siemens y Balay a domicilio en ${cfg.ciudad}. Averías frecuentes, repuestos originales y garantía por escrito.`,
     schema: [negocioSchema, migas([["Inicio", "/"], [a.nombre, `/${a.slug}/`]])],
     cuerpo: `
-${migasHtml([["Inicio", "/"], [a.nombre, `/${a.slug}/`]])}
-<section class="contenedor cabeza">
-  <h1>Reparación de ${minus(a.nombre)} Bosch, Siemens y Balay</h1>
-  <p class="cabeza__texto">${esc(a.intro)}</p>
+<section class="heroe heroe--general">
+  <div class="contenedor heroe__rejilla">
+    <div class="heroe__texto">
+      ${migasHtml([["Inicio", "/"], [a.nombre, `/${a.slug}/`]])}
+      <div class="heroe__ilustracion">${ilustracion(a.icono)}</div>
+      <h1>Reparación de ${minus(a.nombre)} Bosch, Siemens y Balay</h1>
+      <p class="heroe__intro">${esc(a.intro)}</p>
+      <p class="heroe__pregunta">Elige la marca de ${esc(a.articulo)}:</p>
+      <div class="heroe__marcas">${marcas.map((m) => `<a class="boton-marca boton-marca--${m.slug}" href="/${m.slug}/${a.slug}/">${m.nombre}</a>`).join("")}</div>
+    </div>
+    ${formulario({ aparato: a.slug })}
+  </div>
 </section>
 <section class="contenedor seccion">
-  <h2>Elige la marca de ${esc(a.articulo)}</h2>
-  <div class="marcas">${marcas
-    .map((m) => `<a class="marca" href="/${m.slug}/${a.slug}/"><strong>${esc(a.nombre)} ${m.nombre}</strong><span>Ver averías y pedir técnico</span></a>`)
-    .join("")}</div>
-</section>
-<div class="contenedor">${formulario({ aparato: a.slug })}</div>`
+  <div class="seccion__cabeza"><h2>Averías más comunes</h2></div>
+  <div class="averias">${a.averias.map((v) => `<article class="averia"><h3>${esc(v.titulo)}</h3><p>${esc(v.texto)}</p></article>`).join("")}</div>
+</section>`
   });
 }
 
@@ -377,6 +413,7 @@ function paginaMarcaAparato(m, a) {
   pagina({
     ruta,
     prioridad: "0.9",
+    marca: m,
     titulo: `Servicio técnico ${minus(a.nombre)} ${m.nombre} ${cfg.ciudad} | Reparación a domicilio`,
     descripcion: `Reparación de ${minus(a.nombre)} ${m.nombre} en ${cfg.ciudad}: ${a.averias.slice(0, 3).map((v) => minus(v.titulo)).join(", ")}. ${cfg.experiencia} de experiencia, repuestos originales y garantía.`,
     schema: [
@@ -394,24 +431,27 @@ function paginaMarcaAparato(m, a) {
       migas([["Inicio", "/"], [m.nombre, `/${m.slug}/`], [titulo, ruta]])
     ],
     cuerpo: `
-${migasHtml([["Inicio", "/"], [m.nombre, `/${m.slug}/`], [titulo, ruta]])}
-<section class="contenedor cabeza cabeza--con-formulario">
-  <div>
+<section class="heroe">
+  <div class="contenedor heroe__rejilla">
+  <div class="heroe__texto">
+    ${migasHtml([["Inicio", "/"], [m.nombre, `/${m.slug}/`], [titulo, ruta]])}
+    <div class="heroe__ilustracion">${ilustracion(a.icono)}</div>
     <p class="etiqueta">${m.nombre} · ${esc(a.nombre)}</p>
     <h1>Servicio técnico de ${minus(a.nombre)} ${m.nombre} en ${esc(cfg.ciudad)}</h1>
-    <p class="cabeza__texto">¿Problemas con ${esc(a.articulo)} ${m.nombre}? ${esc(a.intro)}</p>
+    <p class="heroe__intro">¿Problemas con ${esc(a.articulo)} ${m.nombre}? ${esc(a.intro)}</p>
     <ul class="lista-check">
       <li>${icono("check")}${esc(cfg.experiencia)} reparando ${minus(a.nombre)} ${m.nombre}</li>
       <li>${icono("check")}Repuestos originales</li>
       <li>${icono("check")}Técnicos formados en equipos ${m.nombre}</li>
       <li>${icono("check")}Garantía por escrito de ${cfg.garantiaMeses} meses</li>
     </ul>
-    <div class="portada__botones">
+    <div class="heroe__botones">
       <a class="boton boton--llamar boton--grande" href="${telHref}" data-evento="llamada">${icono("tel")}Llamar ahora</a>
-      <a class="boton boton--secundario boton--grande" href="${waHref(`Hola, necesito reparar mi ${a.singular} ${m.nombre}`)}" data-evento="whatsapp" target="_blank" rel="noopener">${icono("wa")}WhatsApp</a>
+      <a class="boton boton--claro boton--grande" href="${waHref(`Hola, necesito reparar mi ${a.singular} ${m.nombre}`)}" data-evento="whatsapp" target="_blank" rel="noopener">${icono("wa")}WhatsApp</a>
     </div>
   </div>
   ${formulario({ marca: m.slug, aparato: a.slug })}
+  </div>
 </section>
 <section class="contenedor seccion">
   <h2>Averías más comunes en ${minus(a.nombre)} ${m.nombre}</h2>
@@ -448,7 +488,7 @@ ${listaCodigos ? `<section class="contenedor seccion">
 <section class="contenedor seccion">
   <h2>También reparamos</h2>
   <div class="marcas">${otras
-    .map((o) => `<a class="marca" href="/${o.slug}/${a.slug}/"><strong>${esc(a.nombre)} ${o.nombre}</strong><span>Servicio técnico en ${esc(cfg.ciudad)}</span></a>`)
+    .map((o) => `<a class="marca marca--${o.slug}" href="/${o.slug}/${a.slug}/"><strong>${esc(a.nombre)} ${o.nombre}</strong><span>Servicio técnico en ${esc(cfg.ciudad)}</span></a>`)
     .join("")}</div>
 </section>`
   });
@@ -492,7 +532,7 @@ ${migasHtml([["Inicio", "/"], ["Códigos de error", "/codigos-error/"], [a.nombr
 <section class="contenedor seccion">${tablaCodigos(codigos[a.slug])}</section>
 <section class="contenedor seccion">
   <h2>Reparación de ${minus(a.nombre)} por marca</h2>
-  <div class="marcas">${marcas.map((m) => `<a class="marca" href="/${m.slug}/${a.slug}/"><strong>${esc(a.nombre)} ${m.nombre}</strong><span>Pedir técnico</span></a>`).join("")}</div>
+  <div class="marcas">${marcas.map((m) => `<a class="marca marca--${m.slug}" href="/${m.slug}/${a.slug}/"><strong>${esc(a.nombre)} ${m.nombre}</strong><span>Pedir técnico</span></a>`).join("")}</div>
 </section>
 <div class="contenedor">${formulario({ aparato: a.slug })}</div>`
     });
@@ -501,7 +541,7 @@ ${migasHtml([["Inicio", "/"], ["Códigos de error", "/codigos-error/"], [a.nombr
 
 const tarjetasCodigos = (lista) =>
   `<div class="tarjetas">${lista
-    .map((a) => `<a class="tarjeta" href="/codigos-error/${a.slug}/">${icono(a.icono, "tarjeta__icono")}<span>Códigos de ${minus(a.nombre)}</span></a>`)
+    .map((a) => `<a class="tarjeta" href="/codigos-error/${a.slug}/"><span class="tarjeta__imagen">${ilustracion(a.icono)}</span><span class="tarjeta__titulo">Códigos de ${minus(a.nombre)}</span><span class="tarjeta__mas">Ver significado →</span></a>`)
     .join("")}</div>`;
 
 function contacto() {
@@ -542,7 +582,7 @@ function gracias() {
 </section>`;
   pagina({ ruta: "/gracias/", titulo: `Solicitud recibida | ${cfg.nombre}`, descripcion: "Hemos recibido tu solicitud.", cuerpo: cuerpo(null), indexar: false });
   for (const m of marcas) {
-    pagina({ ruta: `/gracias/${m.slug}/`, titulo: `Solicitud recibida | ${cfg.nombre}`, descripcion: "Hemos recibido tu solicitud.", cuerpo: cuerpo(m), indexar: false });
+    pagina({ ruta: `/gracias/${m.slug}/`, titulo: `Solicitud recibida | ${cfg.nombre}`, descripcion: "Hemos recibido tu solicitud.", cuerpo: cuerpo(m), indexar: false, marca: m });
   }
 }
 

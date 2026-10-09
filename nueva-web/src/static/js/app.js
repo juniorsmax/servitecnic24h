@@ -272,7 +272,8 @@
   // Funciona sin IA con las respuestas de la web. Si hay un endpoint de chat configurado, las preguntas libres van a la IA.
   var botonBot = el("button", { type: "button", class: "bot-boton", "aria-controls": "bot", "aria-expanded": "false" });
   botonBot.innerHTML = '<svg class="ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 6h22v15H13l-6 5v-5H5z"/></svg>';
-  botonBot.appendChild(document.createTextNode("¿Qué le pasa?"));
+  botonBot.setAttribute("aria-label", "Asistente de averías");
+  botonBot.appendChild(el("span", { class: "bot-boton__texto" }, "¿Qué le pasa?"));
   document.body.appendChild(botonBot);
 
   var panel = null, cajaMensajes = null, historial = [], estado = {};

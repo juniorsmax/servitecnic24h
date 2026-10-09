@@ -3,18 +3,37 @@
     "slug": "bosch",
     "nombre": "Bosch",
     "intro": "Bosch es una de las marcas de electrodomésticos más presentes en los hogares de Barcelona. Llevamos más de 20 años reparando sus lavadoras, lavavajillas, hornos, placas y termos, y conocemos bien sus averías más habituales.",
-    "nota": "Bosch, Siemens y Balay pertenecen al mismo grupo fabricante, BSH. Por eso muchos de sus componentes son iguales o muy parecidos, y nuestra experiencia con una marca nos sirve para las otras dos."
+    "nota": "Bosch, Siemens y Balay pertenecen al mismo grupo fabricante, BSH. Por eso muchos de sus componentes son iguales o muy parecidos, y nuestra experiencia con una marca nos sirve para las otras dos.",
+    "tema": {
+      "color": "#d81e2a",
+      "oscuro": "#a8141e",
+      "suave": "#fdecee",
+      "fuente": "Inter"
+    }
   },
   {
     "slug": "siemens",
     "nombre": "Siemens",
     "intro": "Los electrodomésticos Siemens destacan por su tecnología y sus acabados. En nuestro taller trabajamos con ellos a diario desde hace más de 20 años: diagnosticamos la avería en tu domicilio y la reparamos con repuestos originales.",
-    "nota": "Los electrodomésticos Siemens los fabrica el grupo BSH, el mismo que fabrica Bosch y Balay. Comparten muchas piezas y sistemas, lo que nos permite tener a mano los repuestos más habituales."
+    "nota": "Los electrodomésticos Siemens los fabrica el grupo BSH, el mismo que fabrica Bosch y Balay. Comparten muchas piezas y sistemas, lo que nos permite tener a mano los repuestos más habituales.",
+    "tema": {
+      "color": "#0a8a8f",
+      "oscuro": "#076a6e",
+      "suave": "#e3f4f4",
+      "fuente": "Source Sans 3"
+    }
   },
   {
     "slug": "balay",
     "nombre": "Balay",
     "intro": "Balay es una marca nacida en Zaragoza y una de las más vendidas en España. Reparamos electrodomésticos Balay en Barcelona desde hace más de 20 años, con técnicos formados y repuestos originales.",
-    "nota": "Balay forma parte del grupo BSH, igual que Bosch y Siemens. Muchos modelos de las tres marcas comparten motores, bombas, placas electrónicas y resistencias."
+    "nota": "Balay forma parte del grupo BSH, igual que Bosch y Siemens. Muchos modelos de las tres marcas comparten motores, bombas, placas electrónicas y resistencias.",
+    "tema": {
+      "color": "#1d63b8",
+      "oscuro": "#164c8d",
+      "suave": "#e8f0fa",
+      "fuente": "Figtree",
+      "acento": "#f08a24"
+    }
   }
 ]
