@@ -29,11 +29,11 @@ npx serve dist
 
 ## Datos pendientes (rellenar en `config/sitio.json` y `worker/wrangler.toml`)
 
-- [ ] Nombre comercial definitivo (ahora: "Técnico Electrodomésticos BCN").
-- [ ] Dominio.
+- [x] Nombre comercial: "Técnico Electro BCN".
+- [x] Dominio: tecnicoelectrobcn.es.
 - [ ] Teléfono fijo 93 (`telefono` y `telefonoVisible`).
 - [ ] WhatsApp del 93 (`whatsapp`, solo números con prefijo: 3493…).
-- [ ] Correo nuevo.
+- [x] Correo: info@tecnicoelectrobcn.es (crear el buzón).
 - [ ] Titular: nombre o razón social, NIF y dirección (obligatorio por la LSSI).
 - [ ] Analítica nueva: GTM, GA4, Google Ads (ID y etiqueta de conversión), Clarity.
 - [ ] Turnstile (anti-spam de Cloudflare): clave pública en `sitio.json`, secreta en el Worker.

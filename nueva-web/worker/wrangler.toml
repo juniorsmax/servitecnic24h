@@ -9,11 +9,11 @@ main = "src/index.js"
 compatibility_date = "2026-09-01"
 
 [vars]
-# Dominio(s) de la web, separados por comas. PENDIENTE: poner el dominio real.
-ORIGENES_PERMITIDOS = "https://PENDIENTE-DOMINIO.com,https://www.PENDIENTE-DOMINIO.com"
-# Correo donde llegan las solicitudes y remitente verificado en Resend. PENDIENTE.
-AVISO_EMAIL = "PENDIENTE@PENDIENTE-DOMINIO.com"
-REMITENTE_EMAIL = "Web <avisos@PENDIENTE-DOMINIO.com>"
+# Dominio(s) de la web, separados por comas.
+ORIGENES_PERMITIDOS = "https://tecnicoelectrobcn.es,https://www.tecnicoelectrobcn.es"
+# Correo donde llegan las solicitudes y remitente verificado en Resend.
+AVISO_EMAIL = "info@tecnicoelectrobcn.es"
+REMITENTE_EMAIL = "Web <avisos@tecnicoelectrobcn.es>"
 # Opcional: URL a la que enviar cada solicitud (Google Sheets, Make, CRM...).
 WEBHOOK_URL = ""
 # Modelo de Claude para el chat. Haiku: el más barato, suficiente para preguntas y respuestas.
