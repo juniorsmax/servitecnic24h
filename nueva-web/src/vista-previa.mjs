@@ -53,6 +53,9 @@ const css = path.join(WEB, "css", "estilos.css");
 fs.writeFileSync(css, fs.readFileSync(css, "utf8").replace(/url\("\/fuentes\//g, 'url("../fuentes/'));
 
 if (GITHUB) {
+  // La página 404 se sirve en cualquier ruta: <base> hace que sus enlaces relativos apunten a la raíz del sitio.
+  const p404 = path.join(SALIDA, "404.html");
+  fs.writeFileSync(p404, fs.readFileSync(p404, "utf8").replace("<head>", '<head>\n<base href="/tecnico-electrodomesticos-bcn/">'));
   fs.writeFileSync(path.join(SALIDA, "robots.txt"), "User-agent: *\nDisallow: /\n");
   fs.writeFileSync(path.join(SALIDA, ".nojekyll"), "");
 } else {

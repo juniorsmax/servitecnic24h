@@ -99,7 +99,7 @@ function cabecera(marcaActual) {
       <a href="/codigos-error/">Códigos de error</a>
       <a href="/contacto/">Contacto</a>
     </nav>
-    <a class="boton boton--llamar cabecera__tel" href="${telHref}" data-evento="llamada">${icono("tel")}<span>${esc(cfg.telefonoVisible)}</span></a>
+    <a class="boton boton--llamar cabecera__tel" href="${telHref}" data-evento="llamada" aria-label="Llamar al ${esc(cfg.telefonoVisible)}">${icono("tel")}<span>${esc(cfg.telefonoVisible)}</span></a>
   </div>
 </header>`;
 }
@@ -499,7 +499,7 @@ ${listaCodigos ? `<section class="contenedor seccion">
 }
 
 function tablaCodigos(lista) {
-  return `<div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Código</th><th>Qué significa</th><th>Qué puedes hacer</th></tr></thead><tbody>${lista
+  return `<div class="tabla-envoltura" tabindex="0" role="region" aria-label="Tabla"><table class="tabla"><thead><tr><th>Código</th><th>Qué significa</th><th>Qué puedes hacer</th></tr></thead><tbody>${lista
     .map((c) => `<tr><td><strong>${esc(c.codigo)}</strong></td><td>${esc(c.significado)}</td><td>${esc(c.queHacer)}</td></tr>`)
     .join("")}</tbody></table></div>`;
 }
@@ -649,17 +649,17 @@ function legales() {
     cuerpo: envolver("Política de cookies", `
 <p>Solo instalamos cookies de análisis o publicidad si las aceptas. Puedes cambiar tu elección en cualquier momento: <button type="button" class="enlace" data-abrir-cookies>configurar cookies</button>.</p>
 <h2>Cookies técnicas (siempre activas)</h2>
-<div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Nombre</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
+<div class="tabla-envoltura" tabindex="0" role="region" aria-label="Tabla"><table class="tabla"><thead><tr><th>Nombre</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
 <tr><td>preferencias_cookies (almacenamiento local)</td><td>Guarda tu elección sobre cookies.</td><td>12 meses</td></tr>
 <tr><td>Cloudflare Turnstile</td><td>Protege el formulario contra spam.</td><td>Sesión</td></tr>
 </tbody></table></div>
 <h2>Cookies de análisis (solo si las aceptas)</h2>
-<div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Nombre</th><th>Proveedor</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
+<div class="tabla-envoltura" tabindex="0" role="region" aria-label="Tabla"><table class="tabla"><thead><tr><th>Nombre</th><th>Proveedor</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
 <tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Estadísticas de visitas.</td><td>2 años</td></tr>
 <tr><td>_clck, _clsk, CLID</td><td>Microsoft Clarity</td><td>Cómo se usa la web (mapas de calor).</td><td>Hasta 1 año</td></tr>
 </tbody></table></div>
 <h2>Cookies de publicidad (solo si las aceptas)</h2>
-<div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Nombre</th><th>Proveedor</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
+<div class="tabla-envoltura" tabindex="0" role="region" aria-label="Tabla"><table class="tabla"><thead><tr><th>Nombre</th><th>Proveedor</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
 <tr><td>_gcl_au, _gcl_aw</td><td>Google Ads</td><td>Medir qué anuncios generan solicitudes.</td><td>90 días</td></tr>
 </tbody></table></div>
 <p>También puedes borrar o bloquear cookies desde tu navegador.</p>`)
