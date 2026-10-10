@@ -1,7 +1,7 @@
 {
   "_nota": "Datos del negocio. Lo marcado PENDIENTE se rellena cuando lo tengas. Después: npm run build.",
-  "nombre": "Técnico Electro BCN",
-  "nombreCorto": "TécnicoElectro BCN",
+  "nombre": "Técnico Electrodomésticos BCN",
+  "nombreCorto": "TécnicoBCN",
   "dominio": "https://tecnicoelectrobcn.es",
   "ciudad": "Barcelona",
   "experiencia": "más de 20 años",

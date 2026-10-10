@@ -29,7 +29,7 @@ npx serve dist
 
 ## Datos pendientes (rellenar en `config/sitio.json` y `worker/wrangler.toml`)
 
-- [x] Nombre comercial: "Técnico Electro BCN".
+- [ ] Nombre comercial definitivo (ahora: "Técnico Electrodomésticos BCN").
 - [x] Dominio: tecnicoelectrobcn.es.
 - [ ] Teléfono fijo 93 (`telefono` y `telefonoVisible`).
 - [ ] WhatsApp del 93 (`whatsapp`, solo números con prefijo: 3493…).
