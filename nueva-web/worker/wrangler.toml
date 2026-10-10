@@ -4,6 +4,9 @@
 #   TURNSTILE_SECRET   -> clave secreta de Cloudflare Turnstile (anti-spam)
 #   RESEND_API_KEY     -> clave de Resend (para recibir las solicitudes por correo)
 #   PANEL_TOKEN        -> clave que inventas tú para entrar al mapa (/panel/mapa/)
+#   WA_TOKEN           -> token de acceso de la API de WhatsApp Cloud (Meta)
+#   WA_APP_SECRET      -> "App secret" de tu app de Meta (para comprobar la firma de los mensajes)
+#   WA_VERIFY_TOKEN    -> texto que inventas tú y pones también en Meta al configurar el webhook
 name = "web-electrodomesticos-api"
 main = "src/index.js"
 compatibility_date = "2026-09-01"
@@ -18,6 +21,17 @@ REMITENTE_EMAIL = "Web <avisos@tecnicoelectrobcn.es>"
 WEBHOOK_URL = ""
 # Modelo de Claude para el chat. Haiku: el más barato, suficiente para preguntas y respuestas.
 MODELO = "claude-haiku-5-5"
+
+# WhatsApp (API de WhatsApp Cloud de Meta). Identificador del número en Meta. PENDIENTE.
+WA_PHONE_NUMBER_ID = ""
+# Versión de la API de Meta. Revisa la actual en developers.facebook.com antes de publicar.
+GRAPH_VERSION = "v23.0"
+
+# Conversaciones de WhatsApp (caducan a los 7 días).
+# Crear con: npx wrangler kv namespace create CONVERSACIONES  y pegar aquí el id.
+# [[kv_namespaces]]
+# binding = "CONVERSACIONES"
+# id = "PENDIENTE"
 
 # Opcional: estadísticas sin datos personales (para el mapa por código postal).
 # Crear con: npx wrangler kv namespace create ESTADISTICAS  y pegar aquí el id.

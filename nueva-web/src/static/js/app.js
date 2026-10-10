@@ -419,18 +419,27 @@
   }
 
   function buscarCodigo(texto, d) {
-    var m = texto.toUpperCase().match(/\b([EF])\s*:?\s*(\d{2,3})\b/);
+    var m = texto.toUpperCase().match(/\b([EFU])\s*:?\s*(\d{1,4})\b/);
     if (!m) return null;
-    var cod = m[2];
-    var hallados = [];
-    ["lavadoras", "lavavajillas"].forEach(function (ap) {
-      (d.codigos[ap] || []).forEach(function (c) {
-        if (c.codigo.replace(/\s/g, "").split("/").some(function (x) { return x.replace(/\D/g, "") === cod; })) {
-          hallados.push({ ap: ap, c: c });
-        }
+    var letra = m[1], num = parseInt(m[2], 10);
+    // Si el cliente ya ha elegido aparato, se busca primero en ese.
+    var todos = Object.keys(d.codigos).filter(function (k) { return Array.isArray(d.codigos[k]); });
+    function buscarEn(aparatos) {
+      var hallados = [];
+      aparatos.forEach(function (ap) {
+        d.codigos[ap].forEach(function (c) {
+          var coincide = c.codigo.replace(/\s/g, "").split("/").some(function (x) {
+            var p = x.match(/^([EFU])(\d+)$/);
+            return p && p[1] === letra && parseInt(p[2], 10) === num;
+          });
+          if (coincide) hallados.push({ ap: ap, c: c });
+        });
       });
-    });
-    return hallados;
+      return hallados;
+    }
+    // Primero en el aparato que el cliente ya eligió; si no está ahí, en todos.
+    var elegido = estado.aparato && todos.indexOf(estado.aparato.slug) !== -1 ? buscarEn([estado.aparato.slug]) : [];
+    return elegido.length ? elegido : buscarEn(todos);
   }
 
   function responderTexto(texto) {

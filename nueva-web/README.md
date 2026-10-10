@@ -31,7 +31,7 @@ npx serve dist
 
 - [ ] Nombre comercial definitivo (ahora: "Técnico Electrodomésticos BCN").
 - [x] Dominio: tecnicoelectrobcn.es.
-- [ ] Teléfono fijo 93 (`telefono` y `telefonoVisible`).
+- [x] Teléfono fijo: 93 694 08 73.
 - [ ] WhatsApp del 93 (`whatsapp`, solo números con prefijo: 3493…).
 - [x] Correo: info@tecnicoelectrobcn.es (crear el buzón).
 - [ ] Titular: nombre o razón social, NIF y dirección (obligatorio por la LSSI).
@@ -68,3 +68,18 @@ npx serve dist
 
 - Nunca decir "servicio oficial". Se dice: independiente, más de 20 años, repuestos originales, técnicos formados.
 - Los códigos de error son orientativos.
+
+## Bot de WhatsApp (API de WhatsApp Cloud de Meta, sin intermediarios)
+
+Archivo: `worker/src/whatsapp.js`. Dirección del webhook: `https://<tu-worker>/api/whatsapp`.
+
+Flujo: aparato → marca → avería (con orientación de la IA) → nombre, dirección y código postal → foto de la etiqueta (E-Nr) → aviso por correo con la foto adjunta. Escribiendo «menú» se empieza de nuevo.
+
+Para activarlo:
+1. Crear una app en developers.facebook.com con el producto **WhatsApp** y añadir el número.
+2. Secretos del Worker: `WA_TOKEN`, `WA_APP_SECRET`, `WA_VERIFY_TOKEN`.
+3. En `wrangler.toml`: `WA_PHONE_NUMBER_ID` y el espacio KV `CONVERSACIONES`.
+4. En Meta: webhook con la dirección de arriba y el mismo `WA_VERIFY_TOKEN`, suscrito a `messages`.
+
+Importante: un número conectado directamente a la API **no se puede usar a la vez en la app WhatsApp Business** (eso es la "coexistencia", que requiere un proveedor). Las conversaciones las gestiona el bot y te llegan por correo.
+

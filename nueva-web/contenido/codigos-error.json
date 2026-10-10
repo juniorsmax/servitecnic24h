@@ -1,18 +1,217 @@
 {
-  "aviso": "Los códigos son orientativos. Varían según el modelo y el año. En muchos modelos aparecen como E18, E:18 o F18.",
+  "aviso": "Los códigos son orientativos: Bosch, Siemens y Balay comparten muchos códigos, pero el significado exacto puede variar según el modelo y el año. En muchos modelos aparecen como E18, E:18 o F18. Si el error se repite tras probar la solución, pide un técnico.",
   "lavadoras": [
-    {"codigo": "F16 / E16", "significado": "La puerta no está bien cerrada o el programa no ha arrancado.", "queHacer": "Cierra bien la puerta y vuelve a pulsar inicio. Si sigue, puede fallar el blocapuertas."},
-    {"codigo": "F17 / E17", "significado": "El agua entra demasiado despacio o no entra.", "queHacer": "Comprueba que el grifo esté abierto y el filtro de la toma de agua limpio."},
-    {"codigo": "F18 / E18", "significado": "La lavadora no desagua o desagua muy lento.", "queHacer": "Limpia el filtro de la bomba (abajo, delante). Si persiste, la bomba puede estar averiada."},
-    {"codigo": "F21 / E21", "significado": "Problema con el motor o el tambor bloqueado.", "queHacer": "Apaga, desenchufa y comprueba que el tambor gire a mano. Si sigue, revisión de motor o escobillas."},
-    {"codigo": "F23 / E23", "significado": "Ha saltado el sistema antifugas: hay agua en la base.", "queHacer": "Corta el agua y desenchufa. Hay que localizar la fuga."},
-    {"codigo": "F43", "significado": "El tambor no gira.", "queHacer": "Necesita revisión de motor, escobillas o electrónica."}
+    {
+      "codigo": "E16 / F16",
+      "significado": "La puerta no está bien cerrada.",
+      "queHacer": "Abre y vuelve a cerrar la puerta hasta oír el clic. Comprueba que no haya ropa pillada. Si sigue, puede fallar el blocapuertas."
+    },
+    {
+      "codigo": "E17 / F17",
+      "significado": "El agua no entra o entra demasiado despacio.",
+      "queHacer": "Comprueba que el grifo esté abierto, que la manguera no esté doblada y que el filtro de la toma de agua esté limpio."
+    },
+    {
+      "codigo": "E18 / F18",
+      "significado": "La lavadora no desagua o desagua muy lento.",
+      "queHacer": "Limpia el filtro de la bomba (abajo, delante) y revisa que el tubo de desagüe no esté doblado. Si sigue, la bomba puede estar averiada."
+    },
+    {
+      "codigo": "E19 / F19",
+      "significado": "El agua no se calienta en el tiempo previsto.",
+      "queHacer": "Suele ser la resistencia (a menudo con cal) o la sonda de temperatura. Necesita revisión técnica."
+    },
+    {
+      "codigo": "E20 / F20",
+      "significado": "Calentamiento no previsto en el programa.",
+      "queHacer": "Desenchufa la lavadora. Suele fallar el relé de la resistencia o la electrónica. Llama a un técnico."
+    },
+    {
+      "codigo": "E21 / F21",
+      "significado": "Fallo del motor o el tambor no gira.",
+      "queHacer": "Desenchufa y comprueba que el tambor gire a mano y que no haya nada atascado. Si sigue, revisión de motor, escobillas o electrónica."
+    },
+    {
+      "codigo": "E22 / F22",
+      "significado": "Fallo de la sonda de temperatura (NTC).",
+      "queHacer": "La lavadora puede terminar el lavado sin calentar. Hay que cambiar la sonda."
+    },
+    {
+      "codigo": "E23 / F23",
+      "significado": "Ha saltado el sistema antifugas: hay agua en la base.",
+      "queHacer": "Cierra el grifo y desenchufa. Hay que localizar la fuga (goma de puerta, manguitos, bomba…)."
+    },
+    {
+      "codigo": "E25 / F25",
+      "significado": "Fallo del sensor de turbidez.",
+      "queHacer": "La lavadora puede seguir lavando, pero los programas tardan más. Necesita revisión."
+    },
+    {
+      "codigo": "E34",
+      "significado": "La puerta no se bloquea en posición cerrada.",
+      "queHacer": "Comprueba que no haya ropa pillada y reinicia el programa. Si se repite, falla el blocapuertas."
+    },
+    {
+      "codigo": "E36",
+      "significado": "Problema en el desagüe.",
+      "queHacer": "Revisa el filtro, la bomba y el tubo de desagüe."
+    },
+    {
+      "codigo": "E43 / F43",
+      "significado": "El tambor no gira: problema de motor.",
+      "queHacer": "Suele ser escobillas gastadas, cableado o un objeto atascado. Necesita revisión técnica."
+    }
   ],
   "lavavajillas": [
-    {"codigo": "E09", "significado": "Fallo en el calentamiento (bomba de calor o resistencia).", "queHacer": "Requiere revisión de la bomba de calor y su conexión."},
-    {"codigo": "E15", "significado": "Ha saltado el sistema antifugas: hay agua en la base.", "queHacer": "Desenchufa, cierra el agua y llámanos. Hay que encontrar la fuga."},
-    {"codigo": "E22", "significado": "Filtros obstruidos.", "queHacer": "Limpia los filtros del fondo y vuelve a probar."},
-    {"codigo": "E24", "significado": "El agua no sale bien: manguito doblado o desagüe obstruido.", "queHacer": "Revisa el manguito de desagüe y el sifón del fregadero."},
-    {"codigo": "E25", "significado": "Bomba de desagüe bloqueada.", "queHacer": "Retira los filtros y comprueba la tapa de la bomba. Si no gira, hay que cambiarla."}
+    {
+      "codigo": "E09",
+      "significado": "Fallo en el calentamiento del agua (bomba de calor o resistencia).",
+      "queHacer": "Requiere revisión de la bomba de calor y su conexión."
+    },
+    {
+      "codigo": "E14",
+      "significado": "Fallo del caudalímetro, la pieza que mide el agua que entra.",
+      "queHacer": "Revisa que el grifo esté abierto del todo. Si sigue, hay que revisar el caudalímetro."
+    },
+    {
+      "codigo": "E15",
+      "significado": "Ha saltado el sistema antifugas: hay agua en la base.",
+      "queHacer": "Desenchufa, cierra el grifo y pide un técnico. Hay que encontrar la fuga."
+    },
+    {
+      "codigo": "E16",
+      "significado": "Entra agua de forma continua.",
+      "queHacer": "Cierra el grifo. Suele fallar la electroválvula de entrada o el Aquastop."
+    },
+    {
+      "codigo": "E17",
+      "significado": "Entra demasiada agua.",
+      "queHacer": "Cierra el grifo. Hay que revisar la electroválvula, el Aquastop o el caudalímetro."
+    },
+    {
+      "codigo": "E22",
+      "significado": "Filtros obstruidos.",
+      "queHacer": "Limpia los filtros del fondo y vuelve a probar."
+    },
+    {
+      "codigo": "E23",
+      "significado": "Fallo de la bomba de desagüe.",
+      "queHacer": "Comprueba que no haya restos bloqueando la bomba. Si no gira, hay que cambiarla."
+    },
+    {
+      "codigo": "E24",
+      "significado": "El agua no sale bien: tubo de desagüe doblado u obstruido.",
+      "queHacer": "Revisa el tubo de desagüe y la conexión al sifón del fregadero."
+    },
+    {
+      "codigo": "E25",
+      "significado": "Bomba de desagüe bloqueada o tapa de la bomba suelta.",
+      "queHacer": "Retira los filtros y comprueba la tapa de la bomba. Quita cualquier resto (cristal, huesos…)."
+    },
+    {
+      "codigo": "E27",
+      "significado": "Tensión de red insuficiente.",
+      "queHacer": "Prueba en otro enchufe. Si sigue, que un electricista revise la instalación."
+    }
+  ],
+  "frigorificos": [
+    {
+      "codigo": "E01",
+      "significado": "Fallo del sensor de temperatura del frigorífico.",
+      "queHacer": "Necesita revisar el cableado del sensor o cambiarlo."
+    },
+    {
+      "codigo": "E02",
+      "significado": "Fallo del sensor de temperatura del congelador.",
+      "queHacer": "Puede enfriar mal. Necesita revisión técnica."
+    },
+    {
+      "codigo": "E03",
+      "significado": "Fallo del sensor del cajón con control de temperatura.",
+      "queHacer": "Necesita revisión técnica."
+    },
+    {
+      "codigo": "Alarma con pitido",
+      "significado": "Puerta abierta o temperatura demasiado alta.",
+      "queHacer": "Cierra bien la puerta y no la abras durante un rato. Si la alarma vuelve, revisa la junta o pide un técnico."
+    }
+  ],
+  "hornos": [
+    {
+      "codigo": "E011",
+      "significado": "Una tecla se detecta pulsada de forma continua.",
+      "queHacer": "Limpia y seca el panel de mandos. Si vuelve tras reiniciar, puede fallar el panel."
+    },
+    {
+      "codigo": "E115",
+      "significado": "Temperatura del horno demasiado alta. La puerta puede quedar bloqueada.",
+      "queHacer": "Deja que el horno se enfríe y borra el aviso con la tecla del reloj. Si se repite, llama a un técnico."
+    },
+    {
+      "codigo": "E305",
+      "significado": "Error de comunicación entre módulos electrónicos.",
+      "queHacer": "Desconecta el horno un minuto y vuelve a conectarlo. Si sigue, necesita revisión técnica."
+    },
+    {
+      "codigo": "Reloj parpadeando",
+      "significado": "Ha habido un corte de luz. No es una avería.",
+      "queHacer": "Pon la hora y el horno volverá a funcionar."
+    }
+  ],
+  "placas-induccion-vitroceramica": [
+    {
+      "codigo": "E (sola)",
+      "significado": "Hay un código de error más largo.",
+      "queHacer": "Mantén pulsada la zona afectada para ver el código completo y anótalo."
+    },
+    {
+      "codigo": "F2",
+      "significado": "La electrónica se ha sobrecalentado tras mucho tiempo a alta potencia.",
+      "queHacer": "Espera a que se enfríe. Si se repite a menudo, revisa la ventilación del mueble o pide un técnico."
+    },
+    {
+      "codigo": "U400",
+      "significado": "La placa está mal conectada a la red eléctrica.",
+      "queHacer": "Desconéctala de la luz y que un técnico revise la conexión."
+    },
+    {
+      "codigo": "H / h",
+      "significado": "Indicador de calor residual. No es una avería.",
+      "queHacer": "La zona sigue caliente. Desaparece cuando se enfría."
+    },
+    {
+      "codigo": "Códigos numéricos (22, 32, 132…)",
+      "significado": "Su significado depende del modelo exacto.",
+      "queHacer": "Anota el código y el E-Nr de la etiqueta. El técnico lo identificará."
+    }
+  ],
+  "campanas": [
+    {
+      "codigo": "Luz de filtro parpadeando",
+      "significado": "Aviso de saturación de los filtros.",
+      "queHacer": "Lava los filtros metálicos o cambia el de carbón. Después reinicia el aviso según el manual."
+    },
+    {
+      "codigo": "No responden los botones",
+      "significado": "Puede ser la placa de mandos o la electrónica.",
+      "queHacer": "Desconecta la campana un minuto. Si sigue, necesita revisión."
+    }
+  ],
+  "termos-electricos": [
+    {
+      "codigo": "Luz piloto apagada",
+      "significado": "No llega corriente o ha saltado el limitador de seguridad.",
+      "queHacer": "Revisa el diferencial y el enchufe. No rearmes el limitador varias veces: llama a un técnico."
+    },
+    {
+      "codigo": "Salta el diferencial",
+      "significado": "Resistencia derivada a tierra.",
+      "queHacer": "Desconecta el termo y llama a un técnico."
+    },
+    {
+      "codigo": "Goteo continuo por la válvula",
+      "significado": "Válvula de seguridad dañada o presión de red alta.",
+      "queHacer": "Un goteo leve al calentar es normal. Si gotea siempre, hay que cambiar la válvula."
+    }
   ]
 }
